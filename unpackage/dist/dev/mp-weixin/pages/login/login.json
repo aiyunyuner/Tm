@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "登录",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "tn-input": "/tuniao-ui/components/tn-input/tn-input",
+    "tn-verification-code": "/tuniao-ui/components/tn-verification-code/tn-verification-code",
+    "tn-toast": "/tuniao-ui/components/tn-toast/tn-toast"
+  }
+}

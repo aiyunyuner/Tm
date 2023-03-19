@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/me/me",
+    "pages/community/community",
+    "pages/sights/sights",
+    "pages/info/info",
+    "pages/agricultural/agricultural",
+    "pages/info_agri/info_agri",
+    "pages/dynamic/dynamic",
+    "pages/employment/employment",
+    "pages/infor_dyna/infor_dyna",
+    "pages/infor_empl/infor_empl",
+    "pages/index_one/index_one",
+    "pages/new_sights/new_sights",
+    "pages/new_agri/new_agri",
+    "pages/new_dyna/new_dyna",
+    "pages/new_emplo/new_emplo"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "usingComponents": {}
+}

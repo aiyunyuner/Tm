@@ -1,0 +1,851 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.tn-custom-nav-bar__back.data-v-259fb574 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 1000rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.5);
+  color: #FFFFFF;
+  font-size: 18px;
+}
+.tn-custom-nav-bar__back .icon.data-v-259fb574 {
+  display: block;
+  flex: 1;
+  margin: auto;
+  text-align: center;
+}
+.tn-custom-nav-bar__back.data-v-259fb574:before {
+  content: " ";
+  width: 1rpx;
+  height: 110%;
+  position: absolute;
+  top: 22.5%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  pointer-events: none;
+  box-sizing: border-box;
+  opacity: 0.7;
+  background-color: #FFFFFF;
+}
+/* 顶部背景图 start */
+.top-backgroup.data-v-259fb574 {
+  height: 450rpx;
+  z-index: -1;
+}
+.top-backgroup .backgroud-image.data-v-259fb574 {
+  width: 100%;
+  height: 450rpx;
+}
+/* 顶部背景图 end */
+/* 波浪*/
+@-webkit-keyframes move_wave-data-v-259fb574 {
+0% {
+    -webkit-transform: translateX(0) translateZ(0) scaleY(1);
+            transform: translateX(0) translateZ(0) scaleY(1);
+}
+50% {
+    -webkit-transform: translateX(-25%) translateZ(0) scaleY(1);
+            transform: translateX(-25%) translateZ(0) scaleY(1);
+}
+100% {
+    -webkit-transform: translateX(-50%) translateZ(0) scaleY(1);
+            transform: translateX(-50%) translateZ(0) scaleY(1);
+}
+}
+@keyframes move_wave-data-v-259fb574 {
+0% {
+    -webkit-transform: translateX(0) translateZ(0) scaleY(1);
+            transform: translateX(0) translateZ(0) scaleY(1);
+}
+50% {
+    -webkit-transform: translateX(-25%) translateZ(0) scaleY(1);
+            transform: translateX(-25%) translateZ(0) scaleY(1);
+}
+100% {
+    -webkit-transform: translateX(-50%) translateZ(0) scaleY(1);
+            transform: translateX(-50%) translateZ(0) scaleY(1);
+}
+}
+.tnwave.data-v-259fb574 {
+  overflow: hidden;
+  position: absolute;
+  z-index: 9999;
+  height: 200rpx;
+  left: 0;
+  right: 0;
+  top: 290rpx;
+  bottom: auto;
+}
+.waveWrapperInner.data-v-259fb574 {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
+}
+.wave.data-v-259fb574 {
+  position: absolute;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background-repeat: repeat no-repeat;
+  background-position: 0 bottom;
+  -webkit-transform-origin: center bottom;
+          transform-origin: center bottom;
+}
+.bgTop.data-v-259fb574 {
+  opacity: 0.4;
+}
+.waveTop.data-v-259fb574 {
+  background-size: 50% 45px;
+}
+.waveAnimation .waveTop.data-v-259fb574 {
+  -webkit-animation: move_wave-data-v-259fb574 4s linear infinite;
+          animation: move_wave-data-v-259fb574 4s linear infinite;
+}
+.bgMiddle.data-v-259fb574 {
+  opacity: 0.6;
+}
+.waveMiddle.data-v-259fb574 {
+  background-size: 50% 40px;
+}
+.waveAnimation .waveMiddle.data-v-259fb574 {
+  -webkit-animation: move_wave-data-v-259fb574 3.5s linear infinite;
+          animation: move_wave-data-v-259fb574 3.5s linear infinite;
+}
+.bgBottom.data-v-259fb574 {
+  opacity: 0.95;
+}
+.waveBottom.data-v-259fb574 {
+  background-size: 50% 35px;
+}
+.waveAnimation .waveBottom.data-v-259fb574 {
+  -webkit-animation: move_wave-data-v-259fb574 2s linear infinite;
+          animation: move_wave-data-v-259fb574 2s linear infinite;
+}
+/* 波浪*/
+/* 页面 start*/
+.about-shadow.data-v-259fb574 {
+  border-radius: 15rpx;
+  box-shadow: 0rpx 0rpx 50rpx 0rpx rgba(0, 0, 0, 0.07);
+}
+.about__wrap.data-v-259fb574 {
+  position: relative;
+  z-index: 1;
+  margin-top: -330rpx;
+}
+/* 页面 end*/
+/* 用户信息 start */
+.user-info__avatar.data-v-259fb574 {
+  width: 170rpx;
+  height: 170rpx;
+  border: 8rpx solid rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0rpx 0rpx 80rpx 0rpx rgba(0, 0, 0, 0.15);
+}
+.user-info__nick-name.data-v-259fb574 {
+  margin-top: 26rpx;
+  font-size: 36rpx;
+  font-weight: 600;
+  text-align: center;
+}
+/* 用户信息 end */
+/* 图标容器1 start */
+.icon1__item.data-v-259fb574 {
+  background-color: #FFFFFF;
+  border-radius: 10rpx;
+  padding: 30rpx;
+  margin: 20rpx 10rpx;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  transition: -webkit-transform 0.3s linear;
+  transition: transform 0.3s linear;
+  transition: transform 0.3s linear, -webkit-transform 0.3s linear;
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+.icon1__item--icon.data-v-259fb574 {
+  width: 40rpx;
+  height: 40rpx;
+  font-size: 28rpx;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+}
+.icon1__item--icon.data-v-259fb574::after {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  border-radius: inherit;
+  opacity: 1;
+  -webkit-transform: scale(1, 1);
+          transform: scale(1, 1);
+  background-size: 100% 100%;
+  background-image: url(https://tnuiimage.tnkjapp.com/cool_bg_image/icon_bg.png);
+}
+/* 图标容器1 end */
+/* 底部tabbar start*/
+.footerfixed.data-v-259fb574 {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 999;
+  background-color: #FFFFFF;
+  box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(0, 0, 0, 0.07);
+}
+.tabbar.data-v-259fb574 {
+  display: flex;
+  align-items: center;
+  min-height: 110rpx;
+  justify-content: space-between;
+  padding: 0;
+  height: calc(110rpx + env(safe-area-inset-bottom) / 2);
+  padding-bottom: calc(env(safe-area-inset-bottom) / 2);
+}
+.tabbar .action.data-v-259fb574 {
+  font-size: 22rpx;
+  position: relative;
+  flex: 1;
+  text-align: center;
+  padding: 0;
+  display: block;
+  height: auto;
+  line-height: 1;
+  margin: 0;
+  overflow: initial;
+}
+.tabbar .action .bar-icon.data-v-259fb574 {
+  width: 100rpx;
+  position: relative;
+  display: block;
+  height: auto;
+  margin: 0 auto 10rpx;
+  text-align: center;
+  font-size: 42rpx;
+}
+.tabbar .action .bar-icon image.data-v-259fb574 {
+  width: 50rpx;
+  height: 50rpx;
+  display: inline-block;
+}
+
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.tn-custom-nav-bar__back.data-v-9020780c {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 1000rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.5);
+  color: #FFFFFF;
+  font-size: 18px;
+}
+.tn-custom-nav-bar__back .icon.data-v-9020780c {
+  display: block;
+  flex: 1;
+  margin: auto;
+  text-align: center;
+}
+.tn-custom-nav-bar__back.data-v-9020780c:before {
+  content: " ";
+  width: 1rpx;
+  height: 110%;
+  position: absolute;
+  top: 22.5%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  pointer-events: none;
+  box-sizing: border-box;
+  opacity: 0.7;
+  background-color: #FFFFFF;
+}
+/* 自定义导航栏内容 start */
+.custom-nav.data-v-9020780c {
+  height: 100%;
+}
+.custom-nav__back.data-v-9020780c {
+  margin: auto 5rpx;
+  font-size: 40rpx;
+  margin-right: 10rpx;
+  margin-left: 30rpx;
+  flex-basis: 5%;
+}
+.custom-nav__search.data-v-9020780c {
+  flex-basis: 60%;
+  width: 100%;
+  height: 100%;
+}
+.custom-nav__search__box.data-v-9020780c {
+  width: 100%;
+  height: 70%;
+  padding: 10rpx 0;
+  margin: 0 30rpx;
+  border-radius: 60rpx 60rpx 0 60rpx;
+  font-size: 24rpx;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.custom-nav__search__icon.data-v-9020780c {
+  padding-right: 10rpx;
+  margin-left: 20rpx;
+  font-size: 30rpx;
+}
+/* 自定义导航栏内容 end */
+/*logo start */
+.logo-image.data-v-9020780c {
+  width: 65rpx;
+  height: 65rpx;
+  position: relative;
+}
+.logo-pic.data-v-9020780c {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  border-radius: 50%;
+}
+/* 信息展示 start */
+.tn-info__container.data-v-9020780c {
+  margin-top: 40rpx;
+}
+.tn-info__item.data-v-9020780c {
+  width: 48%;
+  margin: 15rpx 0rpx;
+  padding: 38rpx 28rpx;
+  border-radius: 10rpx;
+}
+.tn-info__item__left--icon.data-v-9020780c {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  font-size: 40rpx;
+  margin-right: 20rpx;
+  position: relative;
+  z-index: 1;
+}
+.tn-info__item__left--icon.data-v-9020780c::after {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  border-radius: inherit;
+  opacity: 1;
+  -webkit-transform: scale(1, 1);
+          transform: scale(1, 1);
+  background-size: 100% 100%;
+  background-image: url(https://tnuiimage.tnkjapp.com/cool_bg_image/icon_bg3.png);
+}
+.tn-info__item__left__content.data-v-9020780c {
+  font-size: 30rpx;
+}
+.tn-info__item__left__content--data.data-v-9020780c {
+  margin-top: 5rpx;
+  font-weight: bold;
+}
+.tn-info__item__right--icon.data-v-9020780c {
+  font-size: 30rpx;
+  opacity: 0.5;
+}
+.job-shadow.data-v-9020780c {
+  box-shadow: 0rpx 0rpx 80rpx 0rpx rgba(0, 0, 0, 0.07);
+  border-radius: 20rpx;
+}
+/* 信息展示 end */
+/* 图标容器16 start */
+.tn-cool-color-icon16.data-v-9020780c {
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+.icon16__item.data-v-9020780c {
+  background-color: #FFFFFF;
+  border-radius: 10rpx;
+  padding: 0rpx;
+  margin: 0rpx;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  transition: -webkit-transform 0.3s linear;
+  transition: transform 0.3s linear;
+  transition: transform 0.3s linear, -webkit-transform 0.3s linear;
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+.icon16__item--icon.data-v-9020780c {
+  width: 100rpx;
+  height: 100rpx;
+  font-size: 70rpx;
+  border-radius: 50%;
+  margin-bottom: 18rpx;
+  position: relative;
+  z-index: 1;
+}
+/* 图标容器16 end */
+/* 底部tabbar start*/
+.footerfixed.data-v-9020780c {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 999;
+  background-color: #FFFFFF;
+  box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(0, 0, 0, 0.07);
+}
+.tabbar.data-v-9020780c {
+  display: flex;
+  align-items: center;
+  min-height: 110rpx;
+  justify-content: space-between;
+  padding: 0;
+  height: calc(110rpx + env(safe-area-inset-bottom) / 2);
+  padding-bottom: calc(env(safe-area-inset-bottom) / 2);
+}
+.tabbar .action.data-v-9020780c {
+  font-size: 22rpx;
+  position: relative;
+  flex: 1;
+  text-align: center;
+  padding: 0;
+  display: block;
+  height: auto;
+  line-height: 1;
+  margin: 0;
+  overflow: initial;
+}
+.tabbar .action .bar-icon.data-v-9020780c {
+  width: 100rpx;
+  position: relative;
+  display: block;
+  height: auto;
+  margin: 0 auto 10rpx;
+  text-align: center;
+  font-size: 42rpx;
+}
+.tabbar .action .bar-icon image.data-v-9020780c {
+  width: 50rpx;
+  height: 50rpx;
+  display: inline-block;
+}
+.tabbar .action .bar-circle.data-v-9020780c {
+  position: relative;
+  display: block;
+  margin: -30rpx auto 20rpx;
+  text-align: center;
+  font-size: 52rpx;
+  line-height: 90rpx;
+  background-color: #E72F8C;
+  width: 90rpx !important;
+  height: 90rpx !important;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0rpx 0rpx 20rpx 0rpx rgba(231, 47, 140, 0.5);
+}
+.tabbar .action .bar-circle image.data-v-9020780c {
+  width: 60rpx;
+  height: 60rpx;
+  display: inline-block;
+  margin: 15rpx auto 15rpx;
+}
+
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.tn-custom-nav-bar__back.data-v-2c27ccda {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 1000rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.5);
+  color: #FFFFFF;
+  font-size: 18px;
+}
+.tn-custom-nav-bar__back .icon.data-v-2c27ccda {
+  display: block;
+  flex: 1;
+  margin: auto;
+  text-align: center;
+}
+.tn-custom-nav-bar__back.data-v-2c27ccda:before {
+  content: " ";
+  width: 1rpx;
+  height: 110%;
+  position: absolute;
+  top: 22.5%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  pointer-events: none;
+  box-sizing: border-box;
+  opacity: 0.7;
+  background-color: #FFFFFF;
+}
+/* 自定义导航栏内容 start */
+.custom-nav.data-v-2c27ccda {
+  height: 100%;
+}
+.custom-nav__back.data-v-2c27ccda {
+  margin: auto 5rpx;
+  font-size: 40rpx;
+  margin-right: 10rpx;
+  margin-left: 30rpx;
+  flex-basis: 5%;
+}
+.custom-nav__search.data-v-2c27ccda {
+  flex-basis: 60%;
+  width: 100%;
+  height: 100%;
+}
+.custom-nav__search__box.data-v-2c27ccda {
+  width: 100%;
+  height: 70%;
+  padding: 10rpx 0;
+  margin: 0 30rpx;
+  border-radius: 60rpx 60rpx 60rpx 0;
+  font-size: 24rpx;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.custom-nav__search__icon.data-v-2c27ccda {
+  padding-right: 10rpx;
+  margin-left: 20rpx;
+  font-size: 30rpx;
+}
+/* 自定义导航栏内容 end */
+.screen-shadow.data-v-2c27ccda {
+  box-shadow: 0rpx 0rpx 80rpx 0rpx rgba(0, 0, 0, 0.07);
+  border-radius: 20rpx;
+}
+/* 图标容器15 start */
+.icon15__item.data-v-2c27ccda {
+  width: 30%;
+  background-color: #FFFFFF;
+  border-radius: 10rpx;
+  padding: 30rpx;
+  margin: 20rpx 10rpx;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  transition: -webkit-transform 0.3s linear;
+  transition: transform 0.3s linear;
+  transition: transform 0.3s linear, -webkit-transform 0.3s linear;
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+.icon15__item--icon.data-v-2c27ccda {
+  width: 100rpx;
+  height: 100rpx;
+  font-size: 60rpx;
+  border-radius: 50%;
+  margin-bottom: 18rpx;
+  position: relative;
+  z-index: 1;
+}
+.icon15__item--icon.data-v-2c27ccda::after {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  border-radius: inherit;
+  opacity: 1;
+  -webkit-transform: scale(1, 1);
+          transform: scale(1, 1);
+  background-size: 100% 100%;
+}
+/* 图标容器7 start */
+.icon7__item.data-v-2c27ccda {
+  width: 30%;
+  background-color: #FFFFFF;
+  border-radius: 10rpx;
+  padding: 10rpx;
+  margin: 20rpx 10rpx;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  transition: -webkit-transform 0.3s linear;
+  transition: transform 0.3s linear;
+  transition: transform 0.3s linear, -webkit-transform 0.3s linear;
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+.icon7__item--icon.data-v-2c27ccda {
+  width: 100rpx;
+  height: 100rpx;
+  font-size: 60rpx;
+  border-radius: 0;
+  margin-bottom: 18rpx;
+  position: relative;
+  z-index: 1;
+}
+/* 文章内容 start*/
+.tn-blogger-content__wrap.data-v-2c27ccda {
+  box-shadow: 0rpx 0rpx 80rpx 0rpx rgba(0, 0, 0, 0.09);
+  border-radius: 20rpx;
+  margin: 30rpx;
+}
+.tn-blogger-content__info__btn.data-v-2c27ccda {
+  margin-right: -12rpx;
+  opacity: 0.5;
+}
+.tn-blogger-content__label__item.data-v-2c27ccda {
+  line-height: 45rpx;
+  padding: 0 20rpx;
+  margin: 5rpx 18rpx 0 0;
+}
+.tn-blogger-content__label__item--prefix.data-v-2c27ccda {
+  color: #00FFC8;
+  padding-right: 10rpx;
+}
+.tn-blogger-content__label__desc.data-v-2c27ccda {
+  line-height: 55rpx;
+}
+.tn-blogger-content__main-image.data-v-2c27ccda {
+  border-radius: 16rpx 16rpx 0 0;
+}
+.tn-blogger-content__main-image--1.data-v-2c27ccda {
+  max-width: 690rpx;
+  min-width: 690rpx;
+  max-height: 400rpx;
+  min-height: 400rpx;
+}
+.tn-blogger-content__main-image--2.data-v-2c27ccda {
+  max-width: 260rpx;
+  max-height: 260rpx;
+}
+.tn-blogger-content__main-image--3.data-v-2c27ccda {
+  height: 212rpx;
+  width: 100%;
+}
+.tn-blogger-content__count-icon.data-v-2c27ccda {
+  font-size: 40rpx;
+  padding-right: 5rpx;
+}
+.image-screen.data-v-2c27ccda {
+  padding: 180rpx 0rpx;
+  font-size: 40rpx;
+  font-weight: 300;
+  position: relative;
+}
+.image-pic.data-v-2c27ccda {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  border-radius: 10rpx;
+}
+/* 文章内容 end*/
+/* 移动背景部分 start*/
+.bg-contaniner.data-v-2c27ccda {
+  position: fixed;
+  top: -0rpx;
+  left: -300rpx;
+  --text-color: hsl(0 95% 60%);
+  --bg-color: hsl(0 0% 100%);
+  --bg-size: 200px;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  place-content: center;
+  overflow: hidden;
+  background-color: var(--bg-color);
+  z-index: -1;
+}
+.bg-contaniner.data-v-2c27ccda::before {
+  --size: 150vmax;
+  content: "";
+  inline-size: var(--size);
+  block-size: var(--size);
+  background-image: url("https://tnuiimage.tnkjapp.com/animate/animate3.png");
+  background-size: var(--bg-size);
+  background-repeat: repeat;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  opacity: 0.25;
+  -webkit-animation: bg-data-v-2c27ccda 6s linear infinite;
+          animation: bg-data-v-2c27ccda 6s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+.bg-contaniner.data-v-2c27ccda::before {
+    -webkit-animation-duration: 0s;
+            animation-duration: 0s;
+}
+}
+@-webkit-keyframes bg-data-v-2c27ccda {
+to {
+    background-position: 0 calc(var(--bg-size) * -1);
+}
+}
+@keyframes bg-data-v-2c27ccda {
+to {
+    background-position: 0 calc(var(--bg-size) * -1);
+}
+}
+/* 移动背景部分 end*/
+/* 底部tabbar start*/
+.footerfixed.data-v-2c27ccda {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 999;
+  background-color: #FFFFFF;
+  box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(0, 0, 0, 0.07);
+}
+.tabbar.data-v-2c27ccda {
+  display: flex;
+  align-items: center;
+  min-height: 110rpx;
+  justify-content: space-between;
+  padding: 0;
+  height: calc(110rpx + env(safe-area-inset-bottom) / 2);
+  padding-bottom: calc(env(safe-area-inset-bottom) / 2);
+}
+.tabbar .action.data-v-2c27ccda {
+  font-size: 22rpx;
+  position: relative;
+  flex: 1;
+  text-align: center;
+  padding: 0;
+  display: block;
+  height: auto;
+  line-height: 1;
+  margin: 0;
+  overflow: initial;
+}
+.tabbar .action .bar-icon.data-v-2c27ccda {
+  width: 100rpx;
+  position: relative;
+  display: block;
+  height: auto;
+  margin: 0 auto 10rpx;
+  text-align: center;
+  font-size: 42rpx;
+}
+.tabbar .action .bar-icon image.data-v-2c27ccda {
+  width: 50rpx;
+  height: 50rpx;
+  display: inline-block;
+}
+.tabbar .action .bar-circle.data-v-2c27ccda {
+  position: relative;
+  display: block;
+  margin: -30rpx auto 20rpx;
+  text-align: center;
+  font-size: 52rpx;
+  line-height: 90rpx;
+  background-color: #FFCA28;
+  width: 90rpx !important;
+  height: 90rpx !important;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0rpx 0rpx 20rpx 0rpx rgba(255, 202, 40, 0.5);
+}
+.tabbar .action .bar-circle image.data-v-2c27ccda {
+  width: 60rpx;
+  height: 60rpx;
+  display: inline-block;
+  margin: 15rpx auto 15rpx;
+}
+

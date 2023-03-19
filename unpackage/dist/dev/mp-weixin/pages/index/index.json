@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "首页",
+  "usingComponents": {
+    "tn-tabbar": "/tuniao-ui/components/tn-tabbar/tn-tabbar",
+    "me": "/pages/me/me",
+    "community": "/pages/community/community",
+    "index": "/pages/index_one/index_one"
+  }
+}
