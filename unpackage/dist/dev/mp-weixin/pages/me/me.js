@@ -101,7 +101,7 @@ var components
 try {
   components = {
     tnListCell: function () {
-      return Promise.all(/*! import() | tuniao-ui/components/tn-list-cell/tn-list-cell */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-list-cell/tn-list-cell")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-list-cell/tn-list-cell.vue */ 199))
+      return Promise.all(/*! import() | tuniao-ui/components/tn-list-cell/tn-list-cell */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-list-cell/tn-list-cell")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-list-cell/tn-list-cell.vue */ 333))
     },
   }
 } catch (e) {
@@ -158,7 +158,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
+/* WEBPACK VAR INJECTION */(function(wx, uni) {
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
@@ -336,22 +336,9 @@ var _template_page_mixin = _interopRequireDefault(__webpack_require__(/*! @/libs
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var NavIndexButton = function NavIndexButton() {
   __webpack_require__.e(/*! require.ensure | libs/components/nav-index-button */ "libs/components/nav-index-button").then((function () {
-    return resolve(__webpack_require__(/*! @/libs/components/nav-index-button.vue */ 207));
+    return resolve(__webpack_require__(/*! @/libs/components/nav-index-button.vue */ 341));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -362,6 +349,8 @@ var _default = {
   },
   data: function data() {
     return {
+      u_image: "",
+      name: "",
       tabbarList: [{
         title: '首页',
         activeIcon: 'home-fill',
@@ -390,7 +379,28 @@ var _default = {
       }]
     };
   },
+  onLaunch: function onLaunch() {},
+  gotoManger: function gotoManger() {},
+  mounted: function mounted() {
+    this.$data.u_image = wx.getStorageSync('image');
+    this.$data.name = wx.getStorageSync('name');
+  },
   methods: {
+    gotoabc: function gotoabc() {
+      uni.navigateTo({
+        url: "/pages/ecs/ecs"
+      });
+    },
+    gotoManger: function gotoManger() {
+      uni.navigateTo({
+        url: '/pages/user_manager/user_manager'
+      });
+    },
+    gotoUserUpdate: function gotoUserUpdate() {
+      uni.navigateTo({
+        url: '/pages/user_update/user_update'
+      });
+    },
     switchTabbar: function switchTabbar(index) {
       if (index != this.$data.currentIndex) {
         var a = this.$data.ListTab[index].url;
@@ -402,7 +412,7 @@ var _default = {
   }
 };
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 

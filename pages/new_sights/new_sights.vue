@@ -115,7 +115,7 @@
 
 		data() {
 			return {
-				action: 'http://localhost:10010/img/upload',
+				action: 'http://www.rural.abc/img/upload',
 				selectColor: [{
 					name: "red"
 				}, {
@@ -363,24 +363,13 @@
 			this.$refs.form.setRules(this.rules)
 		},
 		onLoad() {
-			let that = this;
-			// token标志来判断
-			uni.getStorage({
-				key: 'token',
-				success: function(res) {
-					console.log(res.data)
-					that.$data.token = res.data
-				},
-				fail: function(res) {
-					console.log("获取token错误")
-				}
-			});
+			let that = this
 
 			const requestTask = uni.request({
-				url: 'http://localhost:10010/sights/getSightsTypeAll', //仅为示例，并非真实接口地址。
+				url: 'http://www.rural.abc/sights/getSightsTypeAll', //仅为示例，并非真实接口地址。
 				method: 'GET',
 				header: {
-					'token': toString(that.$data.token), //自定义请求头信息
+					'token':  wx.getStorageSync('token'), //自定义请求头信息
 					'content-type': "application/x-www-form-urlencoded"
 				},
 
@@ -479,25 +468,14 @@
 						this.$data.model.where = this.$data.model.region + this.$data.model.whereto
 
 
-						// token标志来判断
-						uni.getStorage({
-							key: 'token',
-							success: function(res) {
-								console.log(res.data)
-								that.$data.token = res.data
-							},
-							fail: function(res) {
-								console.log("获取token错误")
-							}
-						});
-
+					
 
 						console.log(that.$data.model)
 						const requestTask2 = uni.request({
-							url: 'http://localhost:10010/sights/insert', //仅为示例，并非真实接口地址。
+							url: 'http://www.rural.abc/sights/insert', //仅为示例，并非真实接口地址。
 							method: 'POST',
 							header: {
-								'token': toString(that.$data.token), //自定义请求头信息
+								'token':  wx.getStorageSync('token'), //自定义请求头信息
 								'content-type': "application/x-www-form-urlencoded"
 							},
 							data: {

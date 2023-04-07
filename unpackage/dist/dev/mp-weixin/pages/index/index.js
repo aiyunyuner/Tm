@@ -99,7 +99,7 @@ var components
 try {
   components = {
     tnTabbar: function () {
-      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-tabbar/tn-tabbar */ "tuniao-ui/components/tn-tabbar/tn-tabbar").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-tabbar/tn-tabbar.vue */ 192))
+      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-tabbar/tn-tabbar */ "tuniao-ui/components/tn-tabbar/tn-tabbar").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-tabbar/tn-tabbar.vue */ 326))
     },
   }
 } catch (e) {
@@ -321,7 +321,7 @@ var components
 try {
   components = {
     tnListCell: function () {
-      return Promise.all(/*! import() | tuniao-ui/components/tn-list-cell/tn-list-cell */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-list-cell/tn-list-cell")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-list-cell/tn-list-cell.vue */ 199))
+      return Promise.all(/*! import() | tuniao-ui/components/tn-list-cell/tn-list-cell */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-list-cell/tn-list-cell")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-list-cell/tn-list-cell.vue */ 333))
     },
   }
 } catch (e) {
@@ -378,7 +378,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
+/* WEBPACK VAR INJECTION */(function(wx, uni) {
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
@@ -556,22 +556,9 @@ var _template_page_mixin = _interopRequireDefault(__webpack_require__(/*! @/libs
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var NavIndexButton = function NavIndexButton() {
   __webpack_require__.e(/*! require.ensure | libs/components/nav-index-button */ "libs/components/nav-index-button").then((function () {
-    return resolve(__webpack_require__(/*! @/libs/components/nav-index-button.vue */ 207));
+    return resolve(__webpack_require__(/*! @/libs/components/nav-index-button.vue */ 341));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -582,6 +569,8 @@ var _default = {
   },
   data: function data() {
     return {
+      u_image: "",
+      name: "",
       tabbarList: [{
         title: '首页',
         activeIcon: 'home-fill',
@@ -610,7 +599,28 @@ var _default = {
       }]
     };
   },
+  onLaunch: function onLaunch() {},
+  gotoManger: function gotoManger() {},
+  mounted: function mounted() {
+    this.$data.u_image = wx.getStorageSync('image');
+    this.$data.name = wx.getStorageSync('name');
+  },
   methods: {
+    gotoabc: function gotoabc() {
+      uni.navigateTo({
+        url: "/pages/ecs/ecs"
+      });
+    },
+    gotoManger: function gotoManger() {
+      uni.navigateTo({
+        url: '/pages/user_manager/user_manager'
+      });
+    },
+    gotoUserUpdate: function gotoUserUpdate() {
+      uni.navigateTo({
+        url: '/pages/user_update/user_update'
+      });
+    },
     switchTabbar: function switchTabbar(index) {
       if (index != this.$data.currentIndex) {
         var a = this.$data.ListTab[index].url;
@@ -622,7 +632,7 @@ var _default = {
   }
 };
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 
@@ -734,11 +744,8 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
-    tnNavBar: function () {
-      return Promise.all(/*! import() | tuniao-ui/components/tn-nav-bar/tn-nav-bar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-nav-bar/tn-nav-bar")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-nav-bar/tn-nav-bar.vue */ 214))
-    },
     tnSwiper: function () {
-      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-swiper/tn-swiper */ "tuniao-ui/components/tn-swiper/tn-swiper").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-swiper/tn-swiper.vue */ 221))
+      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-swiper/tn-swiper */ "tuniao-ui/components/tn-swiper/tn-swiper").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-swiper/tn-swiper.vue */ 348))
     },
   }
 } catch (e) {
@@ -762,19 +769,12 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  var l0 = _vm.__map(_vm.icons, function (item, index) {
-    var $orig = _vm.__get_orig(item)
-    var g0 = _vm.$tn.color.getRandomCoolBgClass(index)
-    return {
-      $orig: $orig,
-      g0: g0,
-    }
-  })
+  var g0 = _vm.BestList.length
   _vm.$mp.data = Object.assign(
     {},
     {
       $root: {
-        l0: l0,
+        g0: g0,
       },
     }
   )
@@ -811,7 +811,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
+/* WEBPACK VAR INJECTION */(function(uni, wx) {
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
@@ -903,9 +903,19 @@ var _template_page_mixin = _interopRequireDefault(__webpack_require__(/*! @/libs
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var NavIndexButton = function NavIndexButton() {
   __webpack_require__.e(/*! require.ensure | libs/components/nav-index-button */ "libs/components/nav-index-button").then((function () {
-    return resolve(__webpack_require__(/*! @/libs/components/nav-index-button.vue */ 207));
+    return resolve(__webpack_require__(/*! @/libs/components/nav-index-button.vue */ 341));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -916,6 +926,9 @@ var _default = {
   },
   data: function data() {
     return {
+      lis: [{
+        image: ""
+      }],
       tabbarList: [{
         title: '首页',
         activeIcon: 'home-fill',
@@ -937,13 +950,7 @@ var _default = {
       currentIndex: 0,
       // 自定义底栏对应页面的加载情况
       tabberPageLoadFlag: [],
-      banner: [{
-        image: 'http://localhost:10010/img/sights/01.jpg'
-      }, {
-        image: 'http://localhost:10010/img/sights/02.jpg'
-      }, {
-        image: 'http://localhost:10010/img/sights/03.png'
-      }],
+      banner: [],
       ListTab: [{
         url: "../index/index"
       }, {
@@ -976,121 +983,58 @@ var _default = {
         value: '6',
         url: '/pages/employment/employment'
       }],
-      icons: [{
-        icon: "shop",
-        title: "电商"
-      }, {
-        icon: "video",
-        title: "直播"
-      }, {
-        icon: "company",
-        title: "建筑"
-      }, {
-        icon: "computer",
-        title: "互联网"
-      }, {
-        icon: "focus",
-        title: "猎头"
-      }, {
-        icon: "sing",
-        title: "音乐"
-      }, {
-        icon: "code",
-        title: "软件开发"
-      }, {
-        icon: "medical",
-        title: "医疗"
-      }, {
-        icon: "biology",
-        title: "生物"
-      }, {
-        icon: "pharmacy",
-        title: "制药"
-      }, {
-        icon: "chemistry",
-        title: "化学"
-      }, {
-        icon: "creative",
-        title: "教师"
-      }, {
-        icon: "gloves",
-        title: "行政文秘"
-      }, {
-        icon: "caring",
-        title: "通信技术"
-      }, {
-        icon: "refund",
-        title: "外贸"
-      }, {
-        icon: "level",
-        title: "土木"
-      }, {
-        icon: "deploy",
-        title: "机械"
-      }, {
-        icon: "server",
-        title: "电气"
-      }, {
-        icon: "hardware",
-        title: "电子"
-      }, {
-        icon: "group-circle",
-        title: "化工"
-      }, {
-        icon: "cube",
-        title: "材料"
-      }, {
-        icon: "safe",
-        title: "保险"
-      }, {
-        icon: "coupon",
-        title: "证券"
-      }, {
-        icon: "funds",
-        title: "银行"
-      }, {
-        icon: "map",
-        title: "会展"
-      }, {
-        icon: "service",
-        title: "客服"
-      }, {
-        icon: "trophy",
-        title: "销售"
-      }, {
-        icon: "image-text",
-        title: "编辑运营"
-      }, {
-        icon: "brand",
-        title: "投行"
-      }, {
-        icon: "trusty",
-        title: "法务"
-      }, {
-        icon: "comment",
-        title: "咨询"
-      }, {
-        icon: "logistics",
-        title: "快递物流"
-      }, {
-        icon: "moon",
-        title: "艺术设计"
-      }, {
-        icon: "bankcard",
-        title: "财务"
-      }, {
-        icon: "trust",
-        title: "人力"
-      }, {
-        icon: "flag",
-        title: "市场营销"
-      }, {
-        icon: "signpost",
-        title: "其他"
-      }]
+      BestList: ""
     };
   },
+  mounted: function mounted() {
+    var that = this;
+    uni.request({
+      url: "http://www.rural.abc/sights/top3",
+      //仅为示例，并非真实接口地址。
+      method: 'POST',
+      header: {
+        'token': wx.getStorageSync('token'),
+        //自定义请求头信息
+        'content-type': "application/x-www-form-urlencoded"
+      },
+      success: function success(res) {
+        that.$data.lis = res.data;
+        var j = 1;
+        for (var i in that.$data.lis) {
+          if (j > 3) break;
+          that.$data.banner.push(that.$data.lis[i].image);
+          j++;
+        }
+      }
+    });
+    uni.request({
+      url: "http://www.rural.abc/sights/beast",
+      //仅为示例，并非真实接口地址。
+      method: 'POST',
+      header: {
+        'token': wx.getStorageSync('token'),
+        //自定义请求头信息
+        'content-type': "application/x-www-form-urlencoded"
+      },
+      success: function success(res) {
+        that.$data.BestList = res.data;
+        // let j = 1;
+        // for (let i in that.$data.lis) {
+        // 	if (j > 3) break;
+        // 	that.$data.banner.push(that.$data.lis[i].image)
+        // 	j++
+        // }
+      }
+    });
+  },
+
   methods: {
+    toInfo: function toInfo(index) {
+      var that = this;
+      uni.navigateTo({
+        url: "/pages/info/info?sid=".concat(that.$data.lis[index].id)
+      });
+    },
     goPage: function goPage(e) {
       uni.navigateTo({
         url: e
@@ -1099,7 +1043,7 @@ var _default = {
   }
 };
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"]))
 
 /***/ }),
 
@@ -1252,6 +1196,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+//
+//
+//
+//
+//
 //
 //
 //

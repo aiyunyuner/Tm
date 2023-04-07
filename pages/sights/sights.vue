@@ -1,24 +1,5 @@
 <template>
 	<view class="tn-safe-area-inset-bottom">
-		<!-- <tn-nav-bar :isBack="false" :bottomShadow="false" backgroundColor="none">
-			<view class="custom-nav tn-flex tn-flex-col-center tn-flex-row-left">
-				
-				<view class="custom-nav__back">
-					<view class="logo-pic tn-shadow-blur"
-						style="background-image:url('https://tnuiimage.tnkjapp.com/blogger/avatar_2.jpeg')">
-						<view class="logo-image">
-							<tn-badge backgroundColor="#E72F8C" :dot="true" :radius="16" :absolute="true"
-								:translateCenter="false">
-							</tn-badge>
-						</view>
-					</view>
-				</view>
-				<view class="tn-margin-top tn-margin-left">
-
-				</view>
-			</view>
-
-		</tn-nav-bar> -->
 		<view>
 			<tn-tabs :list="scrollList" :current="current" isScroll="true" @change="tabChange" activeColor="#000"
 				bold="true" :fontSize="36"></tn-tabs>
@@ -65,10 +46,7 @@
 		</view>
 
 
-
-		<!-- 回到首页悬浮按钮-->
-		<nav-index-button></nav-index-button>
-
+		<u-loadmore :status="status" />
 	</view>
 </template>
 
@@ -83,35 +61,40 @@
 		},
 		data() {
 			return {
+				total: null, //总共多少条数据
+				formData: {
+					pageSize: 6, //每页10条数据
+					page: 1, //第几页
+				},
 				colorcount: ["red", "cyan", 'blue', 'green', ],
 				current: 0,
 				sightsList: [],
 				scrollList: [],
 				token: "",
-				sights:"",
+				sights: {
+					sightList: "",
+				},
 			}
 		},
-		onLoad() {
+		onReachBottom() {
+			let that = this
+			let allTotal = this.formData.page * this.formData.pageSize
+			if (allTotal < this.total) {
+				//当前条数小于总条数 则增加请求页数
+				that.$data.formData.page++;
+				this.getData() //调用加载数据方法
+			} else {
+				// console.log('已加载全部数据')
+			}
+		},
+		onShow() {
+			this.$data.formData.page=1;
 			let that = this;
-			// token标志来判断
-			uni.getStorage({
-				key: 'token',
-				success: function(res) {
-					console.log(res.data)
-					that.$data.token = res.data
-				},
-				fail: function(res) {
-					console.log("获取token错误")
-				}
-			});
-
-
-
-			const requestTask2 = uni.request({
-				url: 'http://localhost:10010/sights/getSightsTypeAll', //仅为示例，并非真实接口地址。
+			uni.request({
+				url: 'http://www.rural.abc/sights/getSightsTypeAll',
 				method: 'GET',
 				header: {
-					'token': toString(that.$data.token), //自定义请求头信息
+					'token': wx.getStorageSync('token'), //自定义请求头信息
 					'content-type': "application/x-www-form-urlencoded"
 				},
 				success: function(res) {
@@ -123,10 +106,10 @@
 
 
 			const requestTask = uni.request({
-				url: 'http://localhost:10010/sights/getSightsTypeOne', //仅为示例，并非真实接口地址。
+				url: 'http://www.rural.abc/sights/getSightsTypeOne',
 				method: 'POST',
 				header: {
-					'token': toString(that.$data.token), //自定义请求头信息
+					'token': wx.getStorageSync('token'), //自定义请求头信息
 					'content-type': "application/x-www-form-urlencoded"
 				},
 				data: {
@@ -137,17 +120,60 @@
 					that.$data.sights = res.data
 				}
 			});
+			uni.request({
+				url: 'http://www.rural.abc/sights/count',
+				method: 'POST',
+				header: {
+					'token': wx.getStorageSync('token'), //自定义请求头信息
+					'content-type': "application/x-www-form-urlencoded"
+				},
+				data: {
+					id: that.$data.current
+				},
+				success: function(res) {
+					console.log(res)
+					that.$data.total = res.data
+				}
+			});
+
+
 		},
 		methods: {
+			getData() {
+				let that = this
+				uni.request({
+					url: "http://www.rural.abc/sights/more",
+					method: 'POST',
+					data: {
+						start: that.$data.formData.page,
+						pageSize: that.$data.formData.pageSize,
+						id: that.$data.current,
+					},
+					header: {
+						'token': wx.getStorageSync('token'), //自定义请求头信息
+						'content-type': "application/x-www-form-urlencoded"
+					},
+					success: function(res) {
+						//请求数据成功
+						console.log(res)
+						if (res.data.length != 0) {
+							// 	//新数据push到列表中
+							const newlist = res.data
+							that.$data.sights.sightList.push(...newlist)
+						}
+					}
+				})
+
+			},
 			// tab选项卡切换
 			tabChange(index) {
 				let that = this;
 				this.current = index
 				const requestTask = uni.request({
-					url: 'http://localhost:10010/sights/getSightsTypeOne', //仅为示例，并非真实接口地址。
+					url: 'http://www.rural.abc/sights/getSightsTypeOne', //仅为示例，并非真实接口地址。
 					method: 'POST',
 					header: {
-						'token': toString(that.$data.token), //自定义请求头信息
+						'token': wx.getStorageSync('token'), //自定义请求头信息
 						'content-type': "application/x-www-form-urlencoded"
 					},
 					data: {
@@ -158,14 +184,27 @@
 						that.$data.sights = res.data
 					}
 				});
+
+				uni.request({
+					url: 'http://www.rural.abc/sights/count',
+					method: 'POST',
+					header: {
+						'token': wx.getStorageSync('token'), //自定义请求头信息
+						'content-type': "application/x-www-form-urlencoded"
+					},
+					data: {
+						id: that.$data.current
+					},
+					success: function(res) {
+						console.log(res)
+						that.$data.total = res.data
+					}
+				});
 			},
-
-
-
 			goSightsPages(e) {
 				uni.navigateTo({
 					url: `/pages/info/info?sid=${e}`
-				});
+				})
 			}
 		}
 	}

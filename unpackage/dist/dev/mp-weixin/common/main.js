@@ -135,7 +135,7 @@ var _default = {
       key: 'token',
       success: function success(res) {},
       fail: function fail(res) {
-        uni.redirectTo({
+        uni.reLaunch({
           url: '/pages/login/login'
         });
       }

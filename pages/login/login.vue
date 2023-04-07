@@ -1,14 +1,5 @@
 <template>
 	<view class="template-login">
-		<!-- 顶部自定义导航 -->
-		<!--    <tn-nav-bar fixed alpha customBack>
-      <view slot="back" class='tn-custom-nav-bar__back'
-        @click="goBack">
-        <text class='icon tn-icon-left'></text>
-        <text class='icon tn-icon-home-capsule-fill'></text>
-      </view>
-    </tn-nav-bar> -->
-
 		<view class="login">
 			<!-- 顶部背景图片-->
 			<view class="login__bg login__bg--top">
@@ -19,20 +10,9 @@
 				<view class="tn-margin-left tn-margin-right tn-text-bold" style="font-size: 60rpx;">
 					欢迎回来
 				</view>
-				<view class="tn-margin tn-color-gray--disabled tn-text-lg">
-					你是不是傻，菜的一撇的北北
+				<view class="tn-margin tn-color-orange--disabled tn-text-lg">
+					乡村振兴，我看行！
 				</view>
-
-				<!-- 登录/注册切换 -->
-				<!-- <view class="login-sussuspension login__mode tn-flex tn-flex-direction-row tn-flex-nowrap tn-flex-col-center tn-flex-row-center">
-          <view class="login__mode__item tn-flex-1" :class="[{'login__mode__item--active': currentModeIndex === 0}]" @tap.stop="modeSwitch(0)">
-            登录
-          </view>
-          <view class="login__mode__item tn-flex-1" :class="[{'login__mode__item--active': currentModeIndex === 1}]" @tap.stop="modeSwitch(1)">
-            注册
-          </view>
-          <view class="login__mode__slider tn-cool-bg-color-15--reverse" :style="[modeSliderStyle]"></view>
-        </view> -->
 
 				<!-- 输入框内容-->
 				<view class="login__info tn-flex tn-flex-direction-column tn-flex-col-center tn-flex-row-center">
@@ -58,7 +38,7 @@
 							<view
 								class="login__info__item__input__content login__info__item__input__content--verify-code">
 								<!-- <input placeholder-class="input-placeholder" :value="password" placeholder="请输入密码" /> -->
-								<tn-input v-model="password" placeholder="请输入密码"
+								<tn-input v-model="password" placeholder="请输入密码" type="password"
 									placeholder-class="input-placeholder" />
 							</view>
 							<!--  <view class="login__info__item__input__right-verify-code" @tap.stop="getCode">
@@ -88,7 +68,8 @@
 							</view>
 							<view
 								class="login__info__item__input__content login__info__item__input__content--verify-code">
-								<input placeholder-class="input-placeholder" :value="password" placeholder="请输入密码" />
+								<input placeholder-class="input-placeholder" type="password" :value="password"
+									placeholder="请输入密码" />
 							</view>
 							<!-- <view class="login__info__item__input__right-verify-code" @tap.stop="getCode">
                 <tn-button size="sm" padding="5rpx 10rpx" width="100%" shape="round">{{ tips }}</tn-button>
@@ -101,8 +82,11 @@
 								<view class="tn-icon-lock"></view>
 							</view>
 							<view class="login__info__item__input__content">
-								<input :password="!showPassword" placeholder-class="input-placeholder"
-									placeholder="请输入登录密码" />
+								<input v-model="password" :password="!showPassword" type="password"
+									placeholder-class="input-placeholder" placeholder="请再次输入登录密码" />
+								<!-- 	<tn-input :type="type">
+										
+									</tn-input> -->
 							</view>
 							<view class="login__info__item__input__right-icon" @click="showPassword = !showPassword">
 								<view :class="[showPassword ? 'tn-icon-eye' : 'tn-icon-eye-hide']"></view>
@@ -111,7 +95,9 @@
 					</block>
 
 					<view class="login__info__item__button tn-bg-blue tn-color-white" hover-class="tn-hover"
-						:hover-stay-time="150" @click="login">{{ currentModeIndex === 0 ? '登录' : '注册'}}</view>
+						:hover-stay-time="150" @click="currentModeIndex === 0 ? login():insert()">
+						{{ currentModeIndex === 0 ? '登录' : '注册'}}
+					</view>
 
 
 					<view v-if="currentModeIndex === 1" :class="[{'login__info__item__tips': currentModeIndex === 0}]">
@@ -196,7 +182,7 @@
 			login() {
 				let that = this;
 				const requestTask = uni.request({
-					url: 'http://localhost:10010/user/userlogin', //仅为示例，并非真实接口地址。
+					url: 'http://www.rural.abc/user/userlogin', //仅为示例，并非真实接口地址。
 					method: 'POST',
 					header: {
 						'custom-header': 'hello', //自定义请求头信息
@@ -214,11 +200,21 @@
 								content: '',
 								icon: 'success',
 								image: '',
-								duration: 1500
+								duration: 2000,
 							});
 							uni.setStorage({
 								key: 'token',
 								data: res.data.token,
+
+							});
+							uni.setStorage({
+								key: 'name',
+								data: res.data.user.name,
+
+							});
+							uni.setStorage({
+								key: 'image',
+								data: res.data.user.image,
 								success: function() {
 									uni.redirectTo({
 										url: '/pages/index/index'
@@ -247,26 +243,58 @@
 					}
 				});
 			},
+			insert(e) {
+				let that = this
+				uni.request({
+					url: "http://www.rural.abc/user/insert",
+					method: "POST",
+					data: {
+						name: that.$data.username,
+						password: that.$data.password
+					},
+					header: {
+						'custom-header': 'hello', //自定义请求头信息
+						'content-type': "application/x-www-form-urlencoded"
+					},
+					success: function(res) {
+						if (res.data.result == 1) {
+							that.$refs.toast.show({
+								title: '注册成功',
+								content: '',
+								icon: 'success',
+								image: '',
+								duration: 2000,
+							});
+
+							that.$data.currentModeIndex = 0;
+						} else {
+							that.$refs.toast.show({
+								title: '登录失败',
+								content: '请检查密码或者用户名',
+								icon: 'close-circle',
+								image: '',
+								duration: 1500
+							});
+						}
+					},
+
+					fail: function(res) {
+						that.$refs.toast.show({
+							title: '登录失败',
+							content: '请检网络',
+							icon: 'close-circle',
+							image: '',
+							duration: 1500
+						})
+
+					}
+				})
+			},
 			// 切换模式
 			modeSwitch(index) {
 				this.currentModeIndex = index
 				this.showPassword = false
 			},
-			// 获取验证码
-			// getCode() {
-			// 	if (this.$refs.code.canGetCode) {
-			// 		this.$tn.message.loading('正在获取验证码')
-			// 		setTimeout(() => {
-			// 			this.$tn.message.closeLoading()
-			// 			this.$tn.message.toast('验证码已经发送')
-			// 			// 通知组件开始计时
-			// 			this.$refs.code.start()
-			// 		}, 2000)
-			// 	} else {
-			// 		this.$tn.message.toast(this.$refs.code.secNum + '秒后再重试')
-			// 	}
-			// },
-			// 获取验证码倒计时被修改
 			codeChange(event) {
 				this.tips = event
 			}

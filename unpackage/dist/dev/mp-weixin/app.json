@@ -16,7 +16,22 @@
     "pages/new_sights/new_sights",
     "pages/new_agri/new_agri",
     "pages/new_dyna/new_dyna",
-    "pages/new_emplo/new_emplo"
+    "pages/new_emplo/new_emplo",
+    "pages/user_update/user_update",
+    "pages/user_manager/user_manager",
+    "pages/edit_list/edit_list",
+    "pages/update_sight/update_sight",
+    "pages/update_agri/update_agri",
+    "pages/update_dyna/update_dyna",
+    "pages/update_emplo/update_emplo",
+    "pages/edit_list_agri/edit_list_agri",
+    "pages/edit_list_dyna/edit_list_dyna",
+    "pages/edit_list_empl/edit_list_empl",
+    "pages/del_sight/del_sight",
+    "pages/del_agri/del_agri",
+    "pages/del_dyna/del_dyna",
+    "pages/del_empl/del_empl",
+    "pages/ecs/ecs"
   ],
   "subPackages": [],
   "window": {

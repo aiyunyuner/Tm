@@ -101,7 +101,7 @@ var components
 try {
   components = {
     tnTabs: function () {
-      return Promise.all(/*! import() | tuniao-ui/components/tn-tabs/tn-tabs */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-tabs/tn-tabs")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-tabs/tn-tabs.vue */ 250))
+      return Promise.all(/*! import() | tuniao-ui/components/tn-tabs/tn-tabs */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-tabs/tn-tabs")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-tabs/tn-tabs.vue */ 377))
     },
   }
 } catch (e) {
@@ -158,36 +158,15 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {
+/* WEBPACK VAR INJECTION */(function(uni, wx) {
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 18));
 var _template_page_mixin = _interopRequireDefault(__webpack_require__(/*! @/libs/mixin/template_page_mixin.js */ 79));
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -242,7 +221,7 @@ var _template_page_mixin = _interopRequireDefault(__webpack_require__(/*! @/libs
 //
 var NavIndexButton = function NavIndexButton() {
   __webpack_require__.e(/*! require.ensure | libs/components/nav-index-button */ "libs/components/nav-index-button").then((function () {
-    return resolve(__webpack_require__(/*! @/libs/components/nav-index-button.vue */ 207));
+    return resolve(__webpack_require__(/*! @/libs/components/nav-index-button.vue */ 341));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -253,33 +232,43 @@ var _default = {
   },
   data: function data() {
     return {
+      total: null,
+      //总共多少条数据
+      formData: {
+        pageSize: 6,
+        //每页10条数据
+        page: 1 //第几页
+      },
+
       colorcount: ["red", "cyan", 'blue', 'green'],
       current: 0,
       sightsList: [],
       scrollList: [],
       token: "",
-      sights: ""
+      sights: {
+        sightList: ""
+      }
     };
   },
-  onLoad: function onLoad() {
+  onReachBottom: function onReachBottom() {
     var that = this;
-    // token标志来判断
-    uni.getStorage({
-      key: 'token',
-      success: function success(res) {
-        console.log(res.data);
-        that.$data.token = res.data;
-      },
-      fail: function fail(res) {
-        console.log("获取token错误");
-      }
-    });
-    var requestTask2 = uni.request({
-      url: 'http://localhost:10010/sights/getSightsTypeAll',
-      //仅为示例，并非真实接口地址。
+    var allTotal = this.formData.page * this.formData.pageSize;
+    if (allTotal < this.total) {
+      //当前条数小于总条数 则增加请求页数
+      that.$data.formData.page++;
+      this.getData(); //调用加载数据方法
+    } else {
+      // console.log('已加载全部数据')
+    }
+  },
+  onShow: function onShow() {
+    this.$data.formData.page = 1;
+    var that = this;
+    uni.request({
+      url: 'http://www.rural.abc/sights/getSightsTypeAll',
       method: 'GET',
       header: {
-        'token': toString(that.$data.token),
+        'token': wx.getStorageSync('token'),
         //自定义请求头信息
         'content-type': "application/x-www-form-urlencoded"
       },
@@ -290,11 +279,10 @@ var _default = {
       }
     });
     var requestTask = uni.request({
-      url: 'http://localhost:10010/sights/getSightsTypeOne',
-      //仅为示例，并非真实接口地址。
+      url: 'http://www.rural.abc/sights/getSightsTypeOne',
       method: 'POST',
       header: {
-        'token': toString(that.$data.token),
+        'token': wx.getStorageSync('token'),
         //自定义请求头信息
         'content-type': "application/x-www-form-urlencoded"
       },
@@ -306,18 +294,61 @@ var _default = {
         that.$data.sights = res.data;
       }
     });
+    uni.request({
+      url: 'http://www.rural.abc/sights/count',
+      method: 'POST',
+      header: {
+        'token': wx.getStorageSync('token'),
+        //自定义请求头信息
+        'content-type': "application/x-www-form-urlencoded"
+      },
+      data: {
+        id: that.$data.current
+      },
+      success: function success(res) {
+        console.log(res);
+        that.$data.total = res.data;
+      }
+    });
   },
   methods: {
+    getData: function getData() {
+      var that = this;
+      uni.request({
+        url: "http://www.rural.abc/sights/more",
+        method: 'POST',
+        data: {
+          start: that.$data.formData.page,
+          pageSize: that.$data.formData.pageSize,
+          id: that.$data.current
+        },
+        header: {
+          'token': wx.getStorageSync('token'),
+          //自定义请求头信息
+          'content-type': "application/x-www-form-urlencoded"
+        },
+        success: function success(res) {
+          //请求数据成功
+          console.log(res);
+          if (res.data.length != 0) {
+            var _that$$data$sights$si;
+            // 	//新数据push到列表中
+            var newlist = res.data;
+            (_that$$data$sights$si = that.$data.sights.sightList).push.apply(_that$$data$sights$si, (0, _toConsumableArray2.default)(newlist));
+          }
+        }
+      });
+    },
     // tab选项卡切换
     tabChange: function tabChange(index) {
       var that = this;
       this.current = index;
       var requestTask = uni.request({
-        url: 'http://localhost:10010/sights/getSightsTypeOne',
+        url: 'http://www.rural.abc/sights/getSightsTypeOne',
         //仅为示例，并非真实接口地址。
         method: 'POST',
         header: {
-          'token': toString(that.$data.token),
+          'token': wx.getStorageSync('token'),
           //自定义请求头信息
           'content-type': "application/x-www-form-urlencoded"
         },
@@ -329,6 +360,22 @@ var _default = {
           that.$data.sights = res.data;
         }
       });
+      uni.request({
+        url: 'http://www.rural.abc/sights/count',
+        method: 'POST',
+        header: {
+          'token': wx.getStorageSync('token'),
+          //自定义请求头信息
+          'content-type': "application/x-www-form-urlencoded"
+        },
+        data: {
+          id: that.$data.current
+        },
+        success: function success(res) {
+          console.log(res);
+          that.$data.total = res.data;
+        }
+      });
     },
     goSightsPages: function goSightsPages(e) {
       uni.navigateTo({
@@ -338,7 +385,7 @@ var _default = {
   }
 };
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"]))
 
 /***/ }),
 

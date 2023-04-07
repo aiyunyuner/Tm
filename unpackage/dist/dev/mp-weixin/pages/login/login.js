@@ -80,13 +80,13 @@ var components
 try {
   components = {
     tnInput: function () {
-      return Promise.all(/*! import() | tuniao-ui/components/tn-input/tn-input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-input/tn-input")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-input/tn-input.vue */ 228))
+      return Promise.all(/*! import() | tuniao-ui/components/tn-input/tn-input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-input/tn-input")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-input/tn-input.vue */ 355))
     },
     tnVerificationCode: function () {
-      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-verification-code/tn-verification-code */ "tuniao-ui/components/tn-verification-code/tn-verification-code").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-verification-code/tn-verification-code.vue */ 236))
+      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-verification-code/tn-verification-code */ "tuniao-ui/components/tn-verification-code/tn-verification-code").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-verification-code/tn-verification-code.vue */ 363))
     },
     tnToast: function () {
-      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-toast/tn-toast */ "tuniao-ui/components/tn-toast/tn-toast").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-toast/tn-toast.vue */ 243))
+      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-toast/tn-toast */ "tuniao-ui/components/tn-toast/tn-toast").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-toast/tn-toast.vue */ 370))
     },
   }
 } catch (e) {
@@ -113,6 +113,9 @@ var render = function () {
   if (!_vm._isMounted) {
     _vm.e0 = function ($event) {
       _vm.showPassword = !_vm.showPassword
+    }
+    _vm.e1 = function ($event) {
+      _vm.currentModeIndex === 0 ? _vm.login() : _vm.insert()
     }
   }
 }
@@ -309,20 +312,6 @@ var _template_page_mixin = _interopRequireDefault(__webpack_require__(/*! @/libs
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var _default = {
   name: 'login-demo-4',
   mixins: [_template_page_mixin.default],
@@ -352,7 +341,7 @@ var _default = {
     login: function login() {
       var that = this;
       var requestTask = uni.request({
-        url: 'http://localhost:10010/user/userlogin',
+        url: 'http://www.rural.abc/user/userlogin',
         //仅为示例，并非真实接口地址。
         method: 'POST',
         header: {
@@ -372,11 +361,19 @@ var _default = {
               content: '',
               icon: 'success',
               image: '',
-              duration: 1500
+              duration: 2000
             });
             uni.setStorage({
               key: 'token',
-              data: res.data.token,
+              data: res.data.token
+            });
+            uni.setStorage({
+              key: 'name',
+              data: res.data.user.name
+            });
+            uni.setStorage({
+              key: 'image',
+              data: res.data.user.image,
               success: function success() {
                 uni.redirectTo({
                   url: '/pages/index/index'
@@ -404,26 +401,56 @@ var _default = {
         }
       });
     },
+    insert: function insert(e) {
+      var that = this;
+      uni.request({
+        url: "http://www.rural.abc/user/insert",
+        method: "POST",
+        data: {
+          name: that.$data.username,
+          password: that.$data.password
+        },
+        header: {
+          'custom-header': 'hello',
+          //自定义请求头信息
+          'content-type': "application/x-www-form-urlencoded"
+        },
+        success: function success(res) {
+          if (res.data.result == 1) {
+            that.$refs.toast.show({
+              title: '注册成功',
+              content: '',
+              icon: 'success',
+              image: '',
+              duration: 2000
+            });
+            that.$data.currentModeIndex = 0;
+          } else {
+            that.$refs.toast.show({
+              title: '登录失败',
+              content: '请检查密码或者用户名',
+              icon: 'close-circle',
+              image: '',
+              duration: 1500
+            });
+          }
+        },
+        fail: function fail(res) {
+          that.$refs.toast.show({
+            title: '登录失败',
+            content: '请检网络',
+            icon: 'close-circle',
+            image: '',
+            duration: 1500
+          });
+        }
+      });
+    },
     // 切换模式
     modeSwitch: function modeSwitch(index) {
       this.currentModeIndex = index;
       this.showPassword = false;
     },
-    // 获取验证码
-    // getCode() {
-    // 	if (this.$refs.code.canGetCode) {
-    // 		this.$tn.message.loading('正在获取验证码')
-    // 		setTimeout(() => {
-    // 			this.$tn.message.closeLoading()
-    // 			this.$tn.message.toast('验证码已经发送')
-    // 			// 通知组件开始计时
-    // 			this.$refs.code.start()
-    // 		}, 2000)
-    // 	} else {
-    // 		this.$tn.message.toast(this.$refs.code.secNum + '秒后再重试')
-    // 	}
-    // },
-    // 获取验证码倒计时被修改
     codeChange: function codeChange(event) {
       this.tips = event;
     }

@@ -1,10 +1,7 @@
 {
   "navigationBarTitleText": "",
-  "enablePullDownRefresh": false,
+  "enablePullDownRefresh": true,
   "usingComponents": {
-    "tn-nav-bar": "/tuniao-ui/components/tn-nav-bar/tn-nav-bar",
-    "tn-badge": "/tuniao-ui/components/tn-badge/tn-badge",
-    "tn-tabs": "/tuniao-ui/components/tn-tabs/tn-tabs",
     "nav-index-button": "/libs/components/nav-index-button"
   }
 }

@@ -62,11 +62,6 @@
 			</block>
 		</view>
 
-
-
-		<!-- 回到首页悬浮按钮-->
-		<nav-index-button></nav-index-button>
-
 	</view>
 </template>
 
@@ -81,6 +76,11 @@
 		},
 		data() {
 			return {
+				total: null, //总共多少条数据
+				formData: {
+					pageSize: 6, //每页10条数据
+					page: 1, //第几页
+				},
 				current: 0,
 				sightsList: [],
 				scrollList: [{
@@ -97,34 +97,80 @@
 				token: "",
 			}
 		},
-		onLoad() {
+		onReachBottom() {
+			let that = this
+			let allTotal = this.formData.page * this.formData.pageSize
+			if (allTotal < this.total) {
+				//当前条数小于总条数 则增加请求页数
+				that.$data.formData.page++;
+				this.getData() //调用加载数据方法
+			} else {
+				// console.log('已加载全部数据')
+			}
+		},
+		onShow() {
+			this.$data.formData.page=1;
 			let that = this;
-			// token标志来判断
-			uni.getStorage({
-				key: 'token',
-				success: function(res) {
-					console.log(res.data)
-					that.$data.token = res.data
-				},
-				fail: function(res) {
-					console.log("获取token错误")
-				}
-			});
-
 			const requestTask = uni.request({
-				url: 'http://localhost:10010/agricultural/all', //仅为示例，并非真实接口地址。
-				method: 'GET',
+				url: 'http://www.rural.abc/agricultural/more', //仅为示例，并非真实接口地址。
+				method: 'POST',
 				header: {
-					'token': toString(that.$data.token), //自定义请求头信息
+					'token': wx.getStorageSync('token'), //自定义请求头信息
 					'content-type': "application/x-www-form-urlencoded"
 				},
+				data: {
+					start: that.$data.formData.page,
+					pageSize: that.$data.formData.pageSize,
+				},
 				success: function(res) {
-					// console.log(res)
+					console.log(res)
 					that.$data.sightsList = res.data
+				}
+			});
+			uni.request({
+				url: 'http://www.rural.abc/agricultural/count',
+				method: 'POST',
+				header: {
+					'token': wx.getStorageSync('token'), //自定义请求头信息
+					'content-type': "application/x-www-form-urlencoded"
+				},
+				data: {
+					id: that.$data.current
+				},
+				success: function(res) {
+					console.log(res)
+					that.$data.total = res.data
 				}
 			});
 		},
 		methods: {
+
+			getData() {
+				let that = this
+				uni.request({
+					url: "http://www.rural.abc/agricultural/more",
+					method: 'POST',
+					data: {
+						start: that.$data.formData.page,
+						pageSize: that.$data.formData.pageSize,
+						id: that.$data.current,
+					},
+					header: {
+						'token': wx.getStorageSync('token'), //自定义请求头信息
+						'content-type': "application/x-www-form-urlencoded"
+					},
+					success: function(res) {
+						//请求数据成功
+						console.log(res)
+						if (res.data.length != 0) {
+							// 	//新数据push到列表中
+							const newlist = res.data
+							that.$data.sightsList.push(...newlist)
+						}
+					}
+				})
+
+			},
 			// tab选项卡切换
 			tabChange(index) {
 				this.current = index

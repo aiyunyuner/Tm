@@ -8,7 +8,7 @@
 				key: 'token',
 				success: function(res) {},
 				fail: function(res) {
-					uni.redirectTo({
+					uni.reLaunch({
 						url: '/pages/login/login'
 					});
 				}

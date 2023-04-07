@@ -1,17 +1,5 @@
 <template>
 	<view class="template-about tn-safe-area-inset-bottom">
-		<!-- 顶部自定义导航 -->
-		<!-- <tn-nav-bar fixed alpha customBack>
-      <view slot="back" class='tn-custom-nav-bar__back'
-        @click="goBack">
-        <text class='icon tn-icon-left'></text>
-        <text class='icon tn-icon-home-capsule-fill'></text>
-      </view>
-    </tn-nav-bar> -->
-
-
-
-
 		<view class="top-backgroup">
 			<image src='https://tnuiimage.tnkjapp.com/swiper/summer.jpg' mode='widthFix' class='backgroud-image'>
 			</image>
@@ -36,12 +24,14 @@
 			<!-- 头像用户信息 -->
 			<view class="user-info__container tn-flex tn-flex-direction-column tn-flex-col-center tn-flex-row-center">
 				<view class="user-info__avatar tn-bg-grey--light tn-flex tn-flex-col-center tn-flex-row-center">
-					<view class="tn-shadow-blur"
-						style="background-image:url('https://tnuiimage.tnkjapp.com/blogger/avatar_2.jpeg');width: 170rpx;height: 170rpx;background-size: cover;">
+					<view class="tn-shadow-blur" style='width: 170rpx;height: 170rpx;background-size: cover;'>
+						<image style='width: 170rpx;height: 170rpx;' :src="u_image"></image>
 					</view>
 					<!-- <view class="tn-icon-logo-tuniao" style="font-size: 140rpx;color: #01BEFF;"></view> -->
 				</view>
-				<view class="user-info__nick-name">图鸟科技</view>
+				<view class="user-info__nick-name">
+					{{name}}
+				</view>
 			</view>
 
 
@@ -95,7 +85,7 @@
 							class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-cool-bg-color-5 tn-color-white">
 							<view class="tn-icon-logo-tuniao"></view>
 						</view>
-						<view class="tn-margin-left-sm tn-flex-1">关于图鸟</view>
+						<view class="tn-margin-left-sm tn-flex-1" @click="gotoUserUpdate()">更新信息</view>
 						<view class="tn-margin-left-sm tn-color-cyan tn-icon-link"></view>
 					</view>
 				</tn-list-cell>
@@ -105,7 +95,7 @@
 							class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-cool-bg-color-1 tn-color-white">
 							<view class="tn-icon-like-fill"></view>
 						</view>
-						<view class="tn-margin-left-sm tn-flex-1">赞赏北北</view>
+						<view class="tn-margin-left-sm tn-flex-1">我的收藏</view>
 						<!-- <view class="tn-margin-left-sm tn-color-blue tn-icon-copy-fill"></view> -->
 					</view>
 				</tn-list-cell>
@@ -115,7 +105,7 @@
 							class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-cool-bg-color-2 tn-color-white">
 							<view class="tn-icon-set-fill"></view>
 						</view>
-						<view class="tn-margin-left-sm tn-flex-1">更新日志</view>
+						<view class="tn-margin-left-sm tn-flex-1" @click="gotoManger()">管理信息</view>
 						<!-- <view class="tn-margin-left-sm tn-color-gray">懒</view> -->
 					</view>
 				</tn-list-cell>
@@ -130,7 +120,7 @@
 							class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-cool-bg-color-16 tn-color-white">
 							<view class="tn-icon-wechat-fill"></view>
 						</view>
-						<view class="tn-margin-left-sm tn-flex-1">合作勾搭</view>
+						<view class="tn-margin-left-sm tn-flex-1" @click="gotoabc()">合作勾搭</view>
 						<view class="tn-margin-left-sm tn-color-cyan tn-icon-link"></view>
 					</view>
 				</tn-list-cell>
@@ -171,12 +161,9 @@
 		</view>
 
 
-	<!-- 	<tn-tabbar v-model="currentIndex" :list="tabbarList" activeColor="#838383" inactiveColor="#AAAAAA"
+		<!-- 	<tn-tabbar v-model="currentIndex" :list="tabbarList" activeColor="#838383" inactiveColor="#AAAAAA"
 			activeIconColor="tn-cool-bg-color-7" :animation="true" :safeAreaInsetBottom="true" @change="switchTabbar">
 		</tn-tabbar> -->
-
-		<!-- 回到首页悬浮按钮-->
-		<nav-index-button></nav-index-button>
 
 	</view>
 </template>
@@ -192,6 +179,8 @@
 		},
 		data() {
 			return {
+				u_image: "",
+				name: "",
 				tabbarList: [{
 						title: '首页',
 						activeIcon: 'home-fill',
@@ -225,7 +214,32 @@
 				}],
 			}
 		},
+		onLaunch() {
+
+		},
+		gotoManger() {
+
+		},
+		mounted() {
+			this.$data.u_image = wx.getStorageSync('image')
+			this.$data.name = wx.getStorageSync('name')
+		},
 		methods: {
+			gotoabc() {
+				uni.navigateTo({
+					url: "/pages/ecs/ecs"
+				})
+			},
+			gotoManger() {
+				uni.navigateTo({
+					url: '/pages/user_manager/user_manager'
+				});
+			},
+			gotoUserUpdate() {
+				uni.navigateTo({
+					url: '/pages/user_update/user_update'
+				});
+			},
 			switchTabbar(index) {
 				if (index != this.$data.currentIndex) {
 					let a = this.$data.ListTab[index].url

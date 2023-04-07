@@ -1,28 +1,5 @@
 <template>
 	<view class="tn-safe-area-inset-bottom">
-		<tn-nav-bar :isBack="false" :bottomShadow="false" backgroundColor="none">
-			<view class="custom-nav tn-flex tn-flex-col-center tn-flex-row-left">
-				<!-- 图标logo -->
-				<view class="custom-nav__back">
-					<view class="logo-pic tn-shadow-blur"
-						style="background-image:url('https://tnuiimage.tnkjapp.com/blogger/avatar_2.jpeg')">
-						<view class="logo-image">
-							<tn-badge backgroundColor="#E72F8C" :dot="true" :radius="16" :absolute="true"
-								:translateCenter="false">
-							</tn-badge>
-						</view>
-					</view>
-				</view>
-				<view class="tn-margin-top tn-margin-left">
-					<tn-tabs :list="scrollList" :current="current" @change="tabChange" activeColor="#000" bold="true"
-						:fontSize="36"></tn-tabs>
-				</view>
-			</view>
-
-		</tn-nav-bar>
-
-
-		<!-- 不建议写时间，因为写了时间，你就要经常更新文章了鸭-->
 		<view class="" :style="{paddingTop: vuex_custom_bar_height + 'px'}">
 			<block v-for="(item, index) in sightsList" :key="index">
 				<view class="article-shadow tn-margin">
@@ -40,7 +17,7 @@
 							</view>
 							<view class="tn-padding-top-xs">
 								<text class=" tn-text-sm tn-color-gray clamp-text-1">
-									{{ item.where }}
+									{{ item.desc }}
 								</text>
 							</view>
 							<view class="tn-flex tn-flex-row-between tn-flex-col-between">
@@ -62,11 +39,6 @@
 			</block>
 		</view>
 
-
-
-		<!-- 回到首页悬浮按钮-->
-		<nav-index-button></nav-index-button>
-
 	</view>
 </template>
 
@@ -81,6 +53,11 @@
 		},
 		data() {
 			return {
+				total: null, //总共多少条数据
+				formData: {
+					pageSize: 6, //每页10条数据
+					page: 1, //第几页
+				},
 				colorcount: ["red", "cyan", 'blue', 'green', ],
 				current: 0,
 				sightsList: [],
@@ -98,25 +75,30 @@
 				token: "",
 			}
 		},
-		onLoad() {
+		onReachBottom() {
+			let that = this
+			let allTotal = this.formData.page * this.formData.pageSize
+			if (allTotal < this.total) {
+				//当前条数小于总条数 则增加请求页数
+				that.$data.formData.page++;
+				this.getData() //调用加载数据方法
+			} else {
+				// console.log('已加载全部数据')
+			}
+		},
+		onShow() {
+			this.$data.formData.page = 1;
 			let that = this;
-			// token标志来判断
-			uni.getStorage({
-				key: 'token',
-				success: function(res) {
-					console.log(res.data)
-					that.$data.token = res.data
-				},
-				fail: function(res) {
-					console.log("获取token错误")
-				}
-			});
-
 			const requestTask = uni.request({
-				url: 'http://localhost:10010/rural/all', //仅为示例，并非真实接口地址。
-				method: 'GET',
+				url: 'http://www.rural.abc/rural/more', //仅为示例，并非真实接口地址。
+				method: 'POST',
+				data: {
+					start: that.$data.formData.page,
+					pageSize: that.$data.formData.pageSize,
+					id: that.$data.current,
+				},
 				header: {
-					'token': toString(that.$data.token), //自定义请求头信息
+					'token': wx.getStorageSync('token'), //自定义请求头信息
 					'content-type': "application/x-www-form-urlencoded"
 				},
 				success: function(res) {
@@ -124,8 +106,50 @@
 					that.$data.sightsList = res.data
 				}
 			});
+
+			uni.request({
+				url: 'http://www.rural.abc/rural/count',
+				method: 'POST',
+				header: {
+					'token': wx.getStorageSync('token'), //自定义请求头信息
+					'content-type': "application/x-www-form-urlencoded"
+				},
+				data: {
+					id: that.$data.current
+				},
+				success: function(res) {
+					console.log(res)
+					that.$data.total = res.data
+				}
+			});
 		},
 		methods: {
+			getData() {
+				let that = this
+				uni.request({
+					url: "http://www.rural.abc/rural/more",
+					method: 'POST',
+					data: {
+						start: that.$data.formData.page,
+						pageSize: that.$data.formData.pageSize,
+						id: that.$data.current,
+					},
+					header: {
+						'token': wx.getStorageSync('token'), //自定义请求头信息
+						'content-type': "application/x-www-form-urlencoded"
+					},
+					success: function(res) {
+						//请求数据成功
+						console.log(res)
+						if (res.data.length != 0) {
+							// 	//新数据push到列表中
+							const newlist = res.data
+							that.$data.sightsList.push(...newlist)
+						}
+					}
+				})
+
+			},
 			// tab选项卡切换
 			tabChange(index) {
 				this.current = index

@@ -1,7 +1,12 @@
 <template>
-	<view class="tn-bg-white" style="margin-top: -100rpx;border-radius: 50rpx 50rpx 0 0;">
+	<view class="tn-bg-white" style="margin-top: 0rpx;border-radius: 50rpx 50rpx 0 0;">
+		
 		<view class="tn-flex tn-margin-xs tn-padding-top-xl">
+
 			<view class="tn-flex-1 screen-shadow" style="margin: 30rpx 20rpx;padding: 60rpx 0;">
+
+
+
 				<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
 					<view class="icon7__item--icon tn-flex tn-flex-row-center tn-flex-col-center">
 						<image class="" src='https://tnuiimage.tnkjapp.com/icon/5.jpg' mode='aspectFit'

@@ -1,40 +1,9 @@
 <template>
 	<view class="template-job tn-safe-area-inset-bottom">
-		<!-- 顶部自定义导航 -->
-		<!-- 	<tn-nav-bar fixed alpha customBack>
-      <view slot="back" class='tn-custom-nav-bar__back'
-        @click="goBack">
-        <text class='icon tn-icon-left'></text>
-        <text class='icon tn-icon-home-capsule-fill'></text>
-      </view>
-    </tn-nav-bar> -->
-
-		<!-- 顶部自定义导航 -->
-		<tn-nav-bar fixed :isBack="false" :bottomShadow="false" backgroundColor="#FFFFFF">
-			<view class="custom-nav tn-flex tn-flex-col-center tn-flex-row-left">
-				<!-- 返回按钮 -->
-				<view class="custom-nav__back">
-					<view class="logo-pic tn-shadow-blur"
-						style="background-image:url('https://tnuiimage.tnkjapp.com/logo/logo2.png')">
-						<view class="logo-image">
-						</view>
-					</view>
-					<!-- <view class="tn-icon-left"></view> -->
-				</view>
-				<!-- 搜索框 -->
-				<view class="custom-nav__search tn-flex tn-flex-col-center tn-flex-row-center ">
-					<view
-						class="custom-nav__search__box tn-flex tn-flex-col-center tn-flex-row-left tn-color-gray--dark tn-bg-gray--light">
-						<view class="custom-nav__search__icon tn-icon-search"></view>
-						<view class="custom-nav__search__text tn-padding-left-xs">好想搜点什么</view>
-					</view>
-				</view>
-			</view>
-		</tn-nav-bar>
 
 		<!-- banner -->
 		<view class="tn-margin-top" :style="{paddingTop: vuex_custom_bar_height + 'px'}">
-			<tn-swiper :list="banner" :height="350" :effect3d="true" mode="round"></tn-swiper>
+			<tn-swiper :list="banner" :height="350" :effect3d="true" mode="round" @click="toInfo"></tn-swiper>
 		</view>
 
 		<!-- 数据信息 -->
@@ -63,21 +32,62 @@
 		</view>
 
 		<!-- 方式16 start-->
-		<view class="tn-flex tn-flex-wrap tn-margin job-shadow">
+		<!-- <view class="tn-flex tn-flex-wrap tn-margin job-shadow">
 			<block v-for="(item, index) in icons" :key="index">
-				<view class=" " style="width: 25%;">
-					<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center  tn-padding-xl">
-						<view class="icon16__item--icon tn-flex tn-flex-row-center tn-flex-col-center">
-							<view class="tn-cool-color-icon16"
-								:class="[$tn.color.getRandomCoolBgClass(index) + ' tn-icon-' + item.icon]"></view>
+				
+			</block>
+		</view> -->
+		<view class="tn-flex tn-flex-direction-column">
+
+			<block v-for="(item,index) in BestList" :key="index">
+				<view class="tn-blogger-content__wrap">
+					<view class="tn-padding-top-xs">
+						<!-- 方式一 -->
+						<view class="tn-shadow-blur image-pic" :style="'background-image:url(' + item.image + ')'">
+							<view class="image-design">
+							</view>
 						</view>
-						<view class="tn-color-black tn-text-lg tn-text-center">
-							<text class="tn-text-ellipsis">{{item.title}}</text>
+						<!-- 方式二 -->
+						<!-- <image 
+		          class="tn-blogger-content__main-image tn-shadow tn-blogger-content__main-image--1 tn-margin-bottom-sm"
+		          :src="item.mainImage"
+		          mode="aspectFill"
+		        ></image> -->
+					</view>
+					<view class="tn-blogger-content__label tn-text-justify tn-margin-top tn-margin-bottom-sm">
+						<text class="tn-blogger-content__label__desc tn-text-bold tn-text-xl">{{ item.name }}</text>
+					</view>
+
+					<view class="tn-flex tn-flex-row-between tn-flex-col-center tn-margin-top-xs">
+						<view class="justify-content-item tn-flex tn-flex-col-center">
+							<view style="margin-right: 10rpx;margin-left: 0rpx;">
+								<view class="tn-color-gray">
+									<text class="tn-blogger-content__count-icon tn-icon-flower"></text>
+									<text class="tn-padding-right">{{ item.collectionCount }}</text>
+									<text class="tn-blogger-content__count-icon tn-icon-message"></text>
+									<text class="tn-padding-right">{{ item.commentCount }}</text>
+									<text class="tn-blogger-content__count-icon tn-icon-like"></text>
+									<text class="">{{ item.likeCount }}</text>
+								</view>
+							</view>
+						</view>
+						<view class="justify-content-item tn-text-center">
+							<view v-for="(label_item,label_index) in item.label" :key="label_index"
+								class="tn-blogger-content__label__item tn-float-left tn-margin-right tn-bg-gray--light tn-round tn-text-sm tn-text-bold">
+								<text class="tn-blogger-content__label__item--prefix">#</text> {{ label_item }}
+							</view>
+
 						</view>
 					</view>
 				</view>
+
+				<!-- 边距间隔 -->
+				<view class="tn-strip-bottom" v-if="index != BestList.length - 1"></view>
 			</block>
 		</view>
+
+
+
 		<!-- 方式16 end-->
 	</view>
 </template>
@@ -93,6 +103,9 @@
 		},
 		data() {
 			return {
+				lis: [{
+					image: ""
+				}],
 				tabbarList: [{
 						title: '首页',
 						activeIcon: 'home-fill',
@@ -119,13 +132,7 @@
 				currentIndex: 0,
 				// 自定义底栏对应页面的加载情况
 				tabberPageLoadFlag: [],
-				banner: [{
-					image: 'http://localhost:10010/img/sights/01.jpg'
-				}, {
-					image: 'http://localhost:10010/img/sights/02.jpg'
-				}, {
-					image: 'http://localhost:10010/img/sights/03.png'
-				}],
+				banner: [],
 				ListTab: [{
 					url: "../index/index"
 				}, {
@@ -162,157 +169,7 @@
 						url: '/pages/employment/employment'
 					}
 				],
-				icons: [{
-						icon: "shop",
-						title: "电商",
-					},
-					{
-						icon: "video",
-						title: "直播",
-					},
-					{
-						icon: "company",
-						title: "建筑",
-					},
-					{
-						icon: "computer",
-						title: "互联网",
-					},
-					{
-						icon: "focus",
-						title: "猎头",
-					},
-					{
-						icon: "sing",
-						title: "音乐",
-					},
-					{
-						icon: "code",
-						title: "软件开发",
-					},
-					{
-						icon: "medical",
-						title: "医疗",
-					},
-					{
-						icon: "biology",
-						title: "生物",
-					},
-					{
-						icon: "pharmacy",
-						title: "制药",
-					},
-					{
-						icon: "chemistry",
-						title: "化学",
-					},
-					{
-						icon: "creative",
-						title: "教师",
-					},
-					{
-						icon: "gloves",
-						title: "行政文秘",
-					},
-					{
-						icon: "caring",
-						title: "通信技术",
-					},
-					{
-						icon: "refund",
-						title: "外贸",
-					},
-					{
-						icon: "level",
-						title: "土木",
-					},
-					{
-						icon: "deploy",
-						title: "机械",
-					},
-					{
-						icon: "server",
-						title: "电气",
-					},
-					{
-						icon: "hardware",
-						title: "电子",
-					},
-					{
-						icon: "group-circle",
-						title: "化工",
-					},
-					{
-						icon: "cube",
-						title: "材料",
-					},
-					{
-						icon: "safe",
-						title: "保险",
-					},
-					{
-						icon: "coupon",
-						title: "证券",
-					},
-					{
-						icon: "funds",
-						title: "银行",
-					},
-					{
-						icon: "map",
-						title: "会展",
-					},
-					{
-						icon: "service",
-						title: "客服",
-					},
-					{
-						icon: "trophy",
-						title: "销售",
-					},
-					{
-						icon: "image-text",
-						title: "编辑运营",
-					},
-					{
-						icon: "brand",
-						title: "投行",
-					},
-					{
-						icon: "trusty",
-						title: "法务",
-					},
-					{
-						icon: "comment",
-						title: "咨询",
-					},
-					{
-						icon: "logistics",
-						title: "快递物流",
-					},
-					{
-						icon: "moon",
-						title: "艺术设计",
-					},
-					{
-						icon: "bankcard",
-						title: "财务",
-					},
-					{
-						icon: "trust",
-						title: "人力",
-					},
-					{
-						icon: "flag",
-						title: "市场营销",
-					},
-					{
-						icon: "signpost",
-						title: "其他",
-					}
-
-
-				],
+				BestList: "",
 			}
 
 
@@ -320,8 +177,53 @@
 
 
 		},
-		methods: {
+		mounted() {
+			let that = this
+			uni.request({
+				url: "http://www.rural.abc/sights/top3", //仅为示例，并非真实接口地址。
+				method: 'POST',
 
+				header: {
+					'token': wx.getStorageSync('token'), //自定义请求头信息
+					'content-type': "application/x-www-form-urlencoded"
+				},
+				success: function(res) {
+					that.$data.lis = res.data
+					let j = 1;
+					for (let i in that.$data.lis) {
+						if (j > 3) break;
+						that.$data.banner.push(that.$data.lis[i].image)
+						j++
+					}
+				}
+			});
+
+			uni.request({
+				url: "http://www.rural.abc/sights/beast", //仅为示例，并非真实接口地址。
+				method: 'POST',
+
+				header: {
+					'token': wx.getStorageSync('token'), //自定义请求头信息
+					'content-type': "application/x-www-form-urlencoded"
+				},
+				success: function(res) {
+					that.$data.BestList = res.data
+					// let j = 1;
+					// for (let i in that.$data.lis) {
+					// 	if (j > 3) break;
+					// 	that.$data.banner.push(that.$data.lis[i].image)
+					// 	j++
+					// }
+				}
+			});
+		},
+		methods: {
+			toInfo(index) {
+				let that = this
+				uni.navigateTo({
+					url: `/pages/info/info?sid=${that.$data.lis[index].id}`
+				})
+			},
 			goPage(e) {
 				uni.navigateTo({
 					url: e
@@ -563,4 +465,179 @@
 		display: inline-block;
 		margin: 15rpx auto 15rpx;
 	}
+	
+	
+	
+	@import '@/static/css/templatePage/custom_nav_bar.scss';
+	.template-design{
+	}
+	  /* 图标容器10 start */
+	    .icon10 {
+	      &__item {
+	        width: 30%;
+	        background-color: #FFFFFF;
+	        border-radius: 10rpx;
+	        padding: 30rpx;
+	        margin: 20rpx 10rpx;
+	        transform: scale(1);
+	        transition: transform 0.3s linear;
+	        transform-origin: center center;
+	        
+	        &--icon {
+	          width: 84rpx;
+	          height: 65rpx;
+	          font-size: 45rpx;
+	          border-radius: 200rpx;
+	          margin-bottom: 18rpx;
+	          position: relative;
+	          z-index: 1;
+	          
+	          &::after {
+	            content: " ";
+	            position: absolute;
+	            z-index: -1;
+	            width: 100%;
+	            height: 100%;
+	            left: 0;
+	            bottom: 0;
+	            border-radius: inherit;
+	            opacity: 1;
+	            transform: scale(1, 1);
+	            background-size: 100% 100%;
+	            background-image: url(https://tnuiimage.tnkjapp.com/cool_bg_image/icon_bg6.png);
+	          }
+	        }
+	      }
+	    }
+	  /* 图标容器10 end */
+	  
+	  /* 文章内容 start*/
+	  .tn-blogger-content {
+	    &__wrap {
+	      padding: 30rpx;
+	    }
+	    
+	    &__info {
+	      &__btn {
+	        margin-right: -12rpx;
+	        opacity: 0.5;
+	      }
+	    }
+	    
+	    &__label {
+	      &__item {
+	        line-height: 45rpx;
+	        padding: 0 20rpx;
+	        margin: 5rpx 18rpx 0 0;
+	        
+	        &--prefix {
+	          color: #00FFC8;
+	          padding-right: 10rpx;
+	        }
+	      }
+	      
+	      &__desc {
+	        line-height: 55rpx;
+	      }
+	    }
+	    
+	    &__main-image {
+	      box-shadow: 0rpx 5rpx 40rpx 0rpx rgba(43, 158, 246, 0.2);
+	      border-radius: 16rpx;
+	      
+	      &--1 {
+	        max-width: 690rpx;
+	        min-width: 690rpx;
+	        max-height: 400rpx;
+	        min-height: 400rpx;
+	      }
+	      
+	      &--2 {
+	        max-width: 260rpx;
+	        max-height: 260rpx;
+	      }
+	      
+	      &--3 {
+	        height: 212rpx;
+	        width: 100%;
+	      }
+	    }
+	    
+	    &__count-icon {
+	      font-size: 40rpx;
+	      padding-right: 5rpx;
+	    }
+	  }
+	  
+	  .image-design{
+	    padding: 180rpx 0rpx;
+	    font-size: 40rpx;
+	    font-weight: 300;
+	    position: relative;
+	  }
+	  .image-pic{
+	    background-size: cover;
+	    background-repeat:no-repeat;
+	    // background-attachment:fixed;
+	    background-position:top;
+	    border-radius: 10rpx;
+	  }
+	  /* 文章内容 end*/
+	   
+	   /* 间隔线 start*/
+	  .tn-strip-bottom {
+	   width: 100%;
+	   border-bottom: 20rpx solid rgba(241, 241, 241, 0.3);
+	  }
+	   /* 间隔线 end*/
+	
+	/* 底部tabbar start*/
+	.footerfixed{
+	 position: fixed;
+	 width: 100%;
+	 bottom: 0;
+	 z-index: 999;
+	 background-color: #FFFFFF;
+	 box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(0, 0, 0, 0.07);
+	}
+	
+	.tabbar {
+	  display: flex;
+	  align-items: center;
+	  min-height: 110rpx;
+	  justify-content: space-between;
+		padding: 0;
+		height: calc(110rpx + env(safe-area-inset-bottom) / 2);
+		padding-bottom: calc(env(safe-area-inset-bottom) / 2);
+	}
+	
+	.tabbar .action {
+		font-size: 22rpx;
+		position: relative;
+		flex: 1;
+		text-align: center;
+		padding: 0;
+		display: block;
+		height: auto;
+		line-height: 1;
+		margin: 0;
+		overflow: initial;
+	}
+	
+	.tabbar .action .bar-icon {
+		width: 100rpx;
+		position: relative;
+		display: block;
+		height: auto;
+		margin: 0 auto 10rpx;
+		text-align: center;
+		font-size: 42rpx;
+	}
+	
+	.tabbar .action .bar-icon image {
+		width: 50rpx;
+		height: 50rpx;
+		display: inline-block;
+	}
+	  
 </style>
