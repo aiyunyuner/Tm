@@ -149,50 +149,7 @@
 			</view>
 
 			<!-- 更多信息-->
-			<view class="about-shadow tn-margin-top-xl tn-padding-top-sm tn-padding-bottom-sm">
-				<tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30">
-					<view class="tn-flex tn-flex-col-center">
-						<view
-							class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-cool-bg-color-16 tn-color-white">
-							<view class="tn-icon-wechat-fill"></view>
-						</view>
-						<view class="tn-margin-left-sm tn-flex-1">合作勾搭</view>
-						<view class="tn-margin-left-sm tn-color-cyan tn-icon-link"></view>
-					</view>
-				</tn-list-cell>
-				<tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30">
-					<view class="tn-flex tn-flex-col-center">
-						<view
-							class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-cool-bg-color-8 tn-color-white">
-							<view class="tn-icon-message-fill"></view>
-						</view>
-						<view class="tn-margin-left-sm tn-flex-1">问题反馈</view>
-						<view class="tn-margin-left-sm tn-color-blue tn-icon-copy-fill"></view>
-					</view>
-				</tn-list-cell>
-				<tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30">
-					<view class="tn-flex tn-flex-col-center">
-						<view
-							class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-cool-bg-color-6 tn-color-white">
-							<view class="tn-icon-phone-fill"></view>
-						</view>
-						<view class="tn-margin-left-sm tn-flex-1">技术支持</view>
-						<view
-							class="tn-margin-left-sm tn-color-orangered tn-text-sm tn-padding-left-xs tn-padding-right-xs tn-bg-orange--disabled tn-round">
-							136****0470</view>
-					</view>
-				</tn-list-cell>
-				<tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30">
-					<view class="tn-flex tn-flex-col-center">
-						<view
-							class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-cool-bg-color-12 tn-color-white">
-							<view class="tn-icon-safe-fill"></view>
-						</view>
-						<view class="tn-margin-left-sm tn-flex-1">会员协议</view>
-						<view class="tn-margin-left-sm tn-color-red tn-icon-fire-fill"></view>
-					</view>
-				</tn-list-cell>
-			</view>
+		
 
 		</view>
 
@@ -212,7 +169,7 @@
 		data() {
 			return {
 				historyData: [{
-						title: '分销中心',
+						title: '用户中心',
 						icon: 'organizatio',
 						color: 'orange',
 					},
@@ -257,42 +214,42 @@
 		methods: {
 			gotoDempl() {
 				uni.navigateTo({
-					url: "/pages/del_empl/del_empl"
+					url: "/pages/del_empl/del_empl?mu=-2"
 				})
 			},
 			gotoDdyna() {
 				uni.navigateTo({
-					url: "/pages/del_dyna/del_dyna"
+					url: "/pages/del_dyna/del_dyna?mu=-2"
 				})
 			},
 			gotoDagri() {
 				uni.navigateTo({
-					url: "/pages/del_agri/del_agri"
+					url: "/pages/del_agri/del_agri?mu=-2"
 				})
 			},
 			gotoDsight() {
 				uni.navigateTo({
-					url: "/pages/del_sight/del_sight"
+					url: "/pages/del_sight/del_sight?mu=-2"
 				})
 			},
 			togoEempl() {
 				uni.navigateTo({
-					url: "/pages/edit_list_empl/edit_list_empl"
+					url: "/pages/edit_list_empl/edit_list_empl?mu=-2"
 				})
 			},
 			togoEDyna() {
 				uni.navigateTo({
-					url: "/pages/edit_list_dyna/edit_list_dyna"
+					url: "/pages/edit_list_dyna/edit_list_dyna?mu=-2"
 				})
 			},
 			togoEAgri() {
 				uni.navigateTo({
-					url: "/pages/edit_list_agri/edit_list_agri"
+					url: "/pages/edit_list_agri/edit_list_agri?mu=-2"
 				})
 			},
 			togoEsights() {
 				uni.navigateTo({
-					url: "/pages/edit_list/edit_list"
+					url: "/pages/edit_list/edit_list?mu=-2"
 				})
 			},
 			// 跳转到

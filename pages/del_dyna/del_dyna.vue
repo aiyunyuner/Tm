@@ -44,6 +44,7 @@
 	export default {
 		data() {
 			return {
+				mu: "",
 				del_id: "",
 				title: '提示信息',
 				content: '确定删除所选内容吗？',
@@ -80,6 +81,9 @@
 				// console.log('已加载全部数据')
 			}
 		},
+		onLoad: function(e) {
+			this.$data.mu = e.mu;
+		},
 		onShow() {
 			this.getDate()
 		},
@@ -88,7 +92,8 @@
 				this.$data.formData.page = 1;
 				let that = this;
 				uni.request({
-					url: 'http://www.rural.abc/rural/me', //仅为示例，并非真实接口地址。
+					url: 0 > that.mu ? 'http://www.rural.abc/rural/me' :
+					'http://www.rural.abc/rural/more', //仅为示例，并非真实接口地址。
 					method: 'POST',
 					data: {
 						start: that.$data.formData.page,
@@ -105,7 +110,7 @@
 					}
 				});
 				uni.request({
-					url: 'http://www.rural.abc/rural/meCunt',
+					url: 0 > that.mu ? 'http://www.rural.abc/rural/meCunt':'http://www.rural.abc/rural/count',
 					method: 'POST',
 					header: {
 						'token': wx.getStorageSync('token'), //自定义请求头信息
@@ -165,7 +170,7 @@
 			getData() {
 				let that = this
 				uni.request({
-					url: "http://www.rural.abc/rural/me",
+					url: 0 > that.mu ? 'http://www.rural.abc/rural/me' : 'http://www.rural.abc/rural/more',
 					method: 'POST',
 					data: {
 						start: that.$data.formData.page,

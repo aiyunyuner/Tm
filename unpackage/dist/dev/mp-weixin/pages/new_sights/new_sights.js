@@ -100,32 +100,29 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
-    tnNavBar: function () {
-      return Promise.all(/*! import() | tuniao-ui/components/tn-nav-bar/tn-nav-bar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-nav-bar/tn-nav-bar")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-nav-bar/tn-nav-bar.vue */ 429))
-    },
     tnForm: function () {
-      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-form/tn-form */ "tuniao-ui/components/tn-form/tn-form").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-form/tn-form.vue */ 443))
+      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-form/tn-form */ "tuniao-ui/components/tn-form/tn-form").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-form/tn-form.vue */ 437))
     },
     tnFormItem: function () {
-      return Promise.all(/*! import() | tuniao-ui/components/tn-form-item/tn-form-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-form-item/tn-form-item")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-form-item/tn-form-item.vue */ 384))
+      return Promise.all(/*! import() | tuniao-ui/components/tn-form-item/tn-form-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-form-item/tn-form-item")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-form-item/tn-form-item.vue */ 392))
     },
     tnInput: function () {
-      return Promise.all(/*! import() | tuniao-ui/components/tn-input/tn-input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-input/tn-input")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-input/tn-input.vue */ 355))
+      return Promise.all(/*! import() | tuniao-ui/components/tn-input/tn-input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-input/tn-input")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-input/tn-input.vue */ 370))
     },
     tnImageUpload: function () {
-      return Promise.all(/*! import() | tuniao-ui/components/tn-image-upload/tn-image-upload */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-image-upload/tn-image-upload")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-image-upload/tn-image-upload.vue */ 448))
+      return Promise.all(/*! import() | tuniao-ui/components/tn-image-upload/tn-image-upload */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-image-upload/tn-image-upload")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-image-upload/tn-image-upload.vue */ 442))
     },
     tnButton: function () {
-      return Promise.all(/*! import() | tuniao-ui/components/tn-button/tn-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-button/tn-button")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-button/tn-button.vue */ 394))
+      return Promise.all(/*! import() | tuniao-ui/components/tn-button/tn-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-button/tn-button")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-button/tn-button.vue */ 402))
     },
     tnPicker: function () {
-      return Promise.all(/*! import() | tuniao-ui/components/tn-picker/tn-picker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-picker/tn-picker")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-picker/tn-picker.vue */ 455))
+      return Promise.all(/*! import() | tuniao-ui/components/tn-picker/tn-picker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-picker/tn-picker")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-picker/tn-picker.vue */ 449))
     },
     tnSelect: function () {
-      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-select/tn-select */ "tuniao-ui/components/tn-select/tn-select").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-select/tn-select.vue */ 465))
+      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-select/tn-select */ "tuniao-ui/components/tn-select/tn-select").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-select/tn-select.vue */ 459))
     },
     tnToast: function () {
-      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-toast/tn-toast */ "tuniao-ui/components/tn-toast/tn-toast").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-toast/tn-toast.vue */ 370))
+      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-toast/tn-toast */ "tuniao-ui/components/tn-toast/tn-toast").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-toast/tn-toast.vue */ 349))
     },
   }
 } catch (e) {
@@ -199,49 +196,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -398,33 +352,13 @@ var _default = {
       rules: {
         name: [{
           required: true,
-          message: '请输入用户名',
+          message: '请输入风景名称',
           trigger: 'blur'
         }, {
-          min: 3,
-          max: 5,
-          message: '姓名长度在3到5个字符',
+          min: 2,
+          max: 10,
+          message: '姓名长度在2到10个字符',
           trigger: ['change', 'blur']
-        }, {
-          // 此为同步验证，可以直接返回true或者false，如果是异步验证，稍微不同，见下方说明
-          validator: function validator(rule, value, callback) {
-            return _this.$tn.test.chinese(value);
-          },
-          message: '姓名必须为中文',
-          // 触发器可以同时用blur和change，二者之间用英文逗号隔开
-          trigger: ['change', 'blur']
-        }, {
-          // 异步验证需要通过调用callback()，并且在里面抛出new Error()
-          // 抛出的内容为需要提示的信息，和其他方式的message属性的提示一样
-          asyncValidator: function asyncValidator(rule, value, callback) {
-            if (value === '图鸟') {
-              callback(new Error('姓名重复'));
-            } else {
-              // 没有错误，也要执行callback()回调
-              callback();
-            }
-          },
-          trigger: ['blur']
         }],
         sex: [{
           required: true,
@@ -437,13 +371,13 @@ var _default = {
           trigger: 'change'
         }],
         desc: [{
-          min: 5,
-          message: '简介不能少于5个字',
+          min: 1,
+          message: '简介不能少于1个字',
           trigger: 'change'
         }, {
           // 正则表达式验证演示
-          pattern: /^[\u4e00-\u9fa5]+$/gi,
-          message: '简介只能包含中文',
+          pattern: /^.+$/,
+          message: '简介不能少于1个字',
           trigger: 'change'
         }],
         password: [{
@@ -668,7 +602,9 @@ var _default = {
                   image: '',
                   duration: 1500
                 });
-                uni.navigateBack();
+                setTimeout(function () {
+                  uni.navigateBack();
+                }, 1000);
               } else {
                 that.$refs.toast.show({
                   title: '发布失败',

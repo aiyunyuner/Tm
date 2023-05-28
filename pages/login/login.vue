@@ -182,7 +182,8 @@
 			login() {
 				let that = this;
 				const requestTask = uni.request({
-					url: 'http://www.rural.abc/user/userlogin', //仅为示例，并非真实接口地址。
+					url: '/api/user/userlogin',
+					//url: 'http://www.rural.abc/user/userlogin', //仅为示例，并非真实接口地址。
 					method: 'POST',
 					header: {
 						'custom-header': 'hello', //自定义请求头信息

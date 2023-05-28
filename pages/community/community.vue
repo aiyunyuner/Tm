@@ -7,10 +7,10 @@
 
 
 
-				<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
+				<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center" @click="goto1()">
 					<view class="icon7__item--icon tn-flex tn-flex-row-center tn-flex-col-center">
 						<image class="" src='https://tnuiimage.tnkjapp.com/icon/5.jpg' mode='aspectFit'
-							@click="goto1()"></image>
+							></image>
 					</view>
 					<view class="tn-text-center">
 						<view class="tn-text-ellipsis tn-color-black tn-text-lg ">乡村景点</view>
@@ -19,10 +19,10 @@
 				</view>
 			</view>
 			<view class="tn-flex-1 screen-shadow" style="margin: 30rpx 20rpx;padding: 60rpx 0;">
-				<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
+				<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center" @click="goto2()">
 					<view class="icon7__item--icon tn-flex tn-flex-row-center tn-flex-col-center">
 						<image class="" src='https://tnuiimage.tnkjapp.com/icon/6.jpg' mode='aspectFit'
-							@click="goto2()"></image>
+							></image>
 					</view>
 					<view class="tn-text-center">
 						<view class="tn-text-ellipsis tn-color-black tn-text-lg ">农业活动</view>
@@ -34,10 +34,10 @@
 
 		<view class="tn-flex tn-margin-xs" style="margin-top: -10rpx;">
 			<view class="tn-flex-1  screen-shadow" style="margin: 10rpx 20rpx;padding: 60rpx 0;">
-				<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
+				<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center" @click="goto3()">
 					<view class="icon7__item--icon tn-flex tn-flex-row-center tn-flex-col-center">
 						<image class="" src='https://tnuiimage.tnkjapp.com/icon/7.jpg' mode='aspectFit'
-							@click="goto3()"></image>
+							></image>
 					</view>
 					<view class="tn-text-center">
 						<view class="tn-text-ellipsis tn-color-black tn-text-lg">乡村动态</view>
@@ -46,13 +46,13 @@
 				</view>
 			</view>
 			<view class="tn-flex-1  screen-shadow" style="margin: 10rpx 20rpx;padding: 60rpx 0;">
-				<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
+				<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center" @click="goto4()">
 					<view class="icon7__item--icon tn-flex tn-flex-row-center tn-flex-col-center">
 						<image class="" src='https://tnuiimage.tnkjapp.com/icon/8.jpg' mode='aspectFit'
-							@click="goto4()"></image>
+							></image>
 					</view>
-					<view class="tn-text-center">
-						<view class="tn-text-ellipsis tn-color-black tn-text-lg ">乡村就业</view>
+					<view class="tn-text-center" >
+						<view class="tn-text-ellipsis tn-color-black tn-text-lg " >乡村就业</view>
 						<view class="tn-text-ellipsis tn-color-gray--dark">乡村就业</view>
 					</view>
 				</view>
@@ -70,7 +70,7 @@
 		},
 		methods: {
 			goto1(e) {
-				console.log("11111111")
+				
 				uni.navigateTo({
 					url: '/pages/new_sights/new_sights'
 				});

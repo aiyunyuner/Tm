@@ -267,6 +267,16 @@
             }
             
         }
+        ,{
+            "path" : "pages/man_all/man_all",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

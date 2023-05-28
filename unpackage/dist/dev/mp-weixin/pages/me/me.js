@@ -101,7 +101,10 @@ var components
 try {
   components = {
     tnListCell: function () {
-      return Promise.all(/*! import() | tuniao-ui/components/tn-list-cell/tn-list-cell */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-list-cell/tn-list-cell")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-list-cell/tn-list-cell.vue */ 333))
+      return Promise.all(/*! import() | tuniao-ui/components/tn-list-cell/tn-list-cell */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-list-cell/tn-list-cell")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-list-cell/tn-list-cell.vue */ 341))
+    },
+    tnToast: function () {
+      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-toast/tn-toast */ "tuniao-ui/components/tn-toast/tn-toast").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-toast/tn-toast.vue */ 349))
     },
   }
 } catch (e) {
@@ -338,7 +341,7 @@ var _template_page_mixin = _interopRequireDefault(__webpack_require__(/*! @/libs
 //
 var NavIndexButton = function NavIndexButton() {
   __webpack_require__.e(/*! require.ensure | libs/components/nav-index-button */ "libs/components/nav-index-button").then((function () {
-    return resolve(__webpack_require__(/*! @/libs/components/nav-index-button.vue */ 341));
+    return resolve(__webpack_require__(/*! @/libs/components/nav-index-button.vue */ 356));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -386,9 +389,61 @@ var _default = {
     this.$data.name = wx.getStorageSync('name');
   },
   methods: {
+    gotoAllinfo: function gotoAllinfo() {
+      var that = this;
+      uni.request({
+        url: "http://www.rural.abc/user/isManager",
+        //仅为示例，并非真实接口地址。
+        method: 'POST',
+        header: {
+          'token': wx.getStorageSync('token'),
+          //自定义请求头信息
+          'content-type': "application/x-www-form-urlencoded"
+        },
+        success: function success(res) {
+          if (res.data) {
+            uni.navigateTo({
+              url: "/pages/man_all/man_all"
+            });
+          } else {
+            that.$refs.toast.show({
+              title: '',
+              content: '没有访问权限！',
+              icon: 'close-circle',
+              image: '',
+              duration: 1500
+            });
+          }
+        }
+      });
+    },
     gotoabc: function gotoabc() {
-      uni.navigateTo({
-        url: "/pages/ecs/ecs"
+      var that = this;
+      uni.request({
+        // url: "/api/user/isManager", 
+        url: "http://www.rural.abc/user/isManager",
+        //仅为示例，并非真实接口地址。
+        method: 'POST',
+        header: {
+          'token': wx.getStorageSync('token'),
+          //自定义请求头信息
+          'content-type': "application/x-www-form-urlencoded"
+        },
+        success: function success(res) {
+          if (res.data) {
+            uni.navigateTo({
+              url: "/pages/ecs/ecs"
+            });
+          } else {
+            that.$refs.toast.show({
+              title: '',
+              content: '没有访问权限！',
+              icon: 'close-circle',
+              image: '',
+              duration: 1500
+            });
+          }
+        }
       });
     },
     gotoManger: function gotoManger() {

@@ -44,6 +44,7 @@
 	export default {
 		data() {
 			return {
+				mu:"",
 				scrollList: "",
 				del_id: "",
 				title: '提示信息',
@@ -69,6 +70,8 @@
 				show: false,
 
 			}
+		},onLoad: function(e) {
+			this.$data.mu = e.mu;
 		},
 		onReachBottom() {
 			let that = this
@@ -102,7 +105,7 @@
 					}
 				});
 				uni.request({
-					url: 'http://www.rural.abc/sights/me', //仅为示例，并非真实接口地址。
+					url: 0 > that.mu ? 'http://www.rural.abc/sights/me':'http://www.rural.abc/sights/getMore', //仅为示例，并非真实接口地址。
 					method: 'POST',
 					data: {
 						start: that.$data.formData.page,
@@ -119,7 +122,7 @@
 					}
 				});
 				uni.request({
-					url: 'http://www.rural.abc/sights/meCunt',
+					url: 0 > that.mu ?'http://www.rural.abc/sights/meCunt':'http://www.rural.abc/sights/getCount',
 					method: 'POST',
 					header: {
 						'token': wx.getStorageSync('token'), //自定义请求头信息
@@ -180,7 +183,7 @@
 			getData() {
 				let that = this
 				uni.request({
-					url: "http://www.rural.abc/sights/me",
+					url: 0 > that.mu ? 'http://www.rural.abc/sights/me':'http://www.rural.abc/sights/getMore',
 					method: 'POST',
 					data: {
 						start: that.$data.formData.page,

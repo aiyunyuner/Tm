@@ -2,7 +2,7 @@
 	<view class="components-form">
 
 		<!-- 顶部自定义导航 -->
-		<tn-nav-bar fixed>Form表单</tn-nav-bar>
+
 
 		<!-- 页面内容 -->
 		<view :style="{paddingTop: vuex_custom_bar_height + 'px'}">
@@ -12,48 +12,15 @@
 					:labelWidth="labelWidth" :labelAlign="labelAlign">
 					<tn-form-item label="名称" prop="name" :required="true" :labelPosition="labelPosition"
 						:labelAlign="labelAlign">
-						<tn-input v-model="model.name" type="text" placeholder="请输入名称" :border="border"></tn-input>
+						<tn-input v-model="model.name" type="text" placeholder="请输入风景名称" :border="border"></tn-input>
 					</tn-form-item>
-					<!-- <tn-form-item label="地点" prop="where"  :required="true"
-						:labelPosition="labelPosition" :labelAlign="labelAlign">
-						<tn-input v-model="model.where" type="text" placeholder="请输入姓名" :border="border"></tn-input>
-					</tn-form-item> -->
-					<!-- <tn-form-item label="性别" prop="sex" :labelPosition="labelPosition" :labelAlign="labelAlign">
-						<tn-input v-model="model.sex" type="select" placeholder="请选择性别" :border="border"
-							:selectOpen="actionSheetShow" @click="actionSheetShow = true"></tn-input>
-					</tn-form-item> -->
-					<!-- <tn-form-item label="手机号码" prop="phone" rightIcon="phone" :labelPosition="labelPosition"
-						:labelAlign="labelAlign">
-						<tn-input v-model="model.phone" type="number" placeholder="请输入手机号码" :border="border"></tn-input>
-					</tn-form-item> -->
+
 					<tn-form-item label="介绍" :required="true" prop="desc" :labelPosition="labelPosition"
 						:labelAlign="labelAlign">
 						<tn-input v-model="model.desc" type="textarea" placeholder="请输入介绍" :border="border"
 							inputAlign="center"></tn-input>
 					</tn-form-item>
-					<!-- <tn-form-item label="密码" prop="password" :labelPosition="labelPosition" :labelAlign="labelAlign">
-						<tn-input v-model="model.password" type="password" placeholder="请输入密码" :border="border"
-							:passwordIcon="true"></tn-input>
-					</tn-form-item>
-					<tn-form-item label="确认密码" prop="rePassword" :labelPosition="labelPosition"
-						:labelAlign="labelAlign">
-						<tn-input v-model="model.rePassword" type="password" placeholder="请再次输入密码" :border="border">
-						</tn-input>
-					</tn-form-item> -->
-					<!-- <tn-form-item label="水果" prop="fruit" :labelPosition="labelPosition" :labelAlign="labelAlign">
-						<tn-checkbox-group v-model="model.fruit" :width="checkboxWidth" :wrap="checkboxWrap"
-							@change="checkboxGroupChange">
-							<tn-checkbox v-for="(item, index) in checkboxList" :key="index" v-model="item.check"
-								:name="item.name" :disabled="item.disabled">{{ item.name }}</tn-checkbox>
-						</tn-checkbox-group>
-					</tn-form-item> -->
-					<!-- 	<tn-form-item label="支付方式" prop="payType" :labelPosition="labelPosition" :labelAlign="labelAlign">
-						<tn-radio-group v-model="model.payType" :width="radioWidth" :wrap="radioWrap"
-							@change="radioGroupChange">
-							<tn-radio v-for="(item, index) in radioList" :key="index" :name="item.name"
-								:disabled="item.disabled">{{ item.name }}</tn-radio>
-						</tn-radio-group>
-					</tn-form-item> -->
+
 					<tn-form-item label="所在地区" prop="region" :required="true" :labelPosition="labelPosition"
 						:labelAlign="labelAlign">
 						<tn-input v-model="model.region" type="select" placeholder="请选择所在地区" :border="border"
@@ -69,26 +36,16 @@
 							:selectOpen="selectShow2" @click="selectShow2 = true"></tn-input>
 					</tn-form-item>
 					<tn-form-item label="类型" prop="type" :labelPosition="labelPosition" :labelAlign="labelAlign">
-						<tn-input v-model="model.type" type="select" placeholder="请选择商品类型" :border="border"
+						<tn-input v-model="model.type" type="select" placeholder="请选择风景类型" :border="border"
 							:selectOpen="selectShow" @click="selectShow = true"></tn-input>
 					</tn-form-item>
-					<!-- <tn-form-item label="验证码" prop="code" :labelPosition="labelPosition" :labelAlign="labelAlign">
-						<tn-input v-model="model.code" type="text" placeholder="请输入验证码" :border="border"></tn-input>
-						<tn-button slot="right" size="sm" backgroundColor="tn-bg-green" fontColor="tn-color-white"
-							@click="getCode">{{ codeTips }}</tn-button>
-					</tn-form-item> -->
-					<!-- <tn-form-item label="记住密码" prop="remember" :labelPosition="labelPosition" :labelAlign="labelAlign">
-						<tn-switch v-model="model.remember" slot="right"></tn-switch>
-					</tn-form-item> -->
+
 					<tn-form-item label="上传图片" prop="photo" :labelPosition="labelPosition" :labelAlign="labelAlign">
 						<tn-image-upload :fileList="model.photo" :action="action" @on-list-change="imageUploadChange"
 							:autoUpload="true" @on-success="upsuccess()"></tn-image-upload>
 					</tn-form-item>
 				</tn-form>
-				<!-- 				<view class="agreement">
-					<tn-checkbox v-model="model.agreement" @change="agreementCheckChange"></tn-checkbox>
-					<view class="agreement-text">勾选同意当前协议</view>
-				</view> -->
+
 				<tn-button backgroundColor="#01BEFF" fontColor="#FFFFFF" width="100%" @click="submit">提交</tn-button>
 			</view>
 
@@ -208,37 +165,16 @@
 				rules: {
 					name: [{
 							required: true,
-							message: '请输入用户名',
+							message: '请输入风景名称',
 							trigger: 'blur'
 						},
 						{
-							min: 3,
-							max: 5,
-							message: '姓名长度在3到5个字符',
+							min: 2,
+							max: 10,
+							message: '姓名长度在2到10个字符',
 							trigger: ['change', 'blur'],
 						},
-						{
-							// 此为同步验证，可以直接返回true或者false，如果是异步验证，稍微不同，见下方说明
-							validator: (rule, value, callback) => {
-								return this.$tn.test.chinese(value);
-							},
-							message: '姓名必须为中文',
-							// 触发器可以同时用blur和change，二者之间用英文逗号隔开
-							trigger: ['change', 'blur'],
-						},
-						{
-							// 异步验证需要通过调用callback()，并且在里面抛出new Error()
-							// 抛出的内容为需要提示的信息，和其他方式的message属性的提示一样
-							asyncValidator: (rule, value, callback) => {
-								if (value === '图鸟') {
-									callback(new Error('姓名重复'));
-								} else {
-									// 没有错误，也要执行callback()回调
-									callback();
-								}
-							},
-							trigger: ['blur'],
-						}
+
 					],
 					sex: [{
 						required: true,
@@ -251,14 +187,14 @@
 						trigger: 'change'
 					}],
 					desc: [{
-							min: 5,
-							message: '简介不能少于5个字',
+							min: 1,
+							message: '简介不能少于1个字',
 							trigger: 'change'
 						},
 						{
 							// 正则表达式验证演示
-							pattern: /^[\u4e00-\u9fa5]+$/gi,
-							message: '简介只能包含中文',
+							pattern: /^.+$/,
+							message: '简介不能少于1个字',
 							trigger: 'change'
 						}
 					],
@@ -369,7 +305,7 @@
 				url: 'http://www.rural.abc/sights/getSightsTypeAll', //仅为示例，并非真实接口地址。
 				method: 'GET',
 				header: {
-					'token':  wx.getStorageSync('token'), //自定义请求头信息
+					'token': wx.getStorageSync('token'), //自定义请求头信息
 					'content-type': "application/x-www-form-urlencoded"
 				},
 
@@ -466,16 +402,12 @@
 					if (valid) {
 						console.log("2wwww")
 						this.$data.model.where = this.$data.model.region + this.$data.model.whereto
-
-
-					
-
 						console.log(that.$data.model)
 						const requestTask2 = uni.request({
 							url: 'http://www.rural.abc/sights/insert', //仅为示例，并非真实接口地址。
 							method: 'POST',
 							header: {
-								'token':  wx.getStorageSync('token'), //自定义请求头信息
+								'token': wx.getStorageSync('token'), //自定义请求头信息
 								'content-type': "application/x-www-form-urlencoded"
 							},
 							data: {
@@ -499,7 +431,12 @@
 										image: '',
 										duration: 1500
 									})
-									uni.navigateBack();
+
+
+									setTimeout(() => {
+										uni.navigateBack();
+									}, 1000);
+									
 								} else {
 									that.$refs.toast.show({
 										title: '发布失败',

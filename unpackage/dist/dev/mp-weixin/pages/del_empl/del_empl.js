@@ -101,10 +101,10 @@ var components
 try {
   components = {
     tnModal: function () {
-      return Promise.all(/*! import() | tuniao-ui/components/tn-modal/tn-modal */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-modal/tn-modal")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-modal/tn-modal.vue */ 479))
+      return Promise.all(/*! import() | tuniao-ui/components/tn-modal/tn-modal */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-modal/tn-modal")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-modal/tn-modal.vue */ 473))
     },
     tnToast: function () {
-      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-toast/tn-toast */ "tuniao-ui/components/tn-toast/tn-toast").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-toast/tn-toast.vue */ 370))
+      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-toast/tn-toast */ "tuniao-ui/components/tn-toast/tn-toast").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-toast/tn-toast.vue */ 349))
     },
   }
 } catch (e) {
@@ -214,6 +214,7 @@ var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/
 var _default = {
   data: function data() {
     return {
+      mu: '',
       del_id: "",
       title: '提示信息',
       content: '确定删除所选内容吗？',
@@ -250,6 +251,9 @@ var _default = {
       // console.log('已加载全部数据')
     }
   },
+  onLoad: function onLoad(e) {
+    this.$data.mu = e.mu;
+  },
   onShow: function onShow() {
     this.getDate();
   },
@@ -258,7 +262,7 @@ var _default = {
       this.$data.formData.page = 1;
       var that = this;
       uni.request({
-        url: 'http://www.rural.abc/employment/me',
+        url: 0 > that.mu ? 'http://www.rural.abc/employment/me' : 'http://www.rural.abc/employment/more',
         //仅为示例，并非真实接口地址。
         method: 'POST',
         data: {
@@ -276,7 +280,7 @@ var _default = {
         }
       });
       uni.request({
-        url: 'http://www.rural.abc/employment/meCunt',
+        url: 0 > that.mu ? 'http://www.rural.abc/employment/meCunt' : 'http://www.rural.abc/employment/count',
         method: 'POST',
         header: {
           'token': wx.getStorageSync('token'),
@@ -335,7 +339,7 @@ var _default = {
     getData: function getData() {
       var that = this;
       uni.request({
-        url: "http://www.rural.abc/employment/me",
+        url: 0 > that.mu ? 'http://www.rural.abc/employment/me' : 'http://www.rural.abc/employment/more',
         method: 'POST',
         data: {
           start: that.$data.formData.page,

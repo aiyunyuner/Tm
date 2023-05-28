@@ -190,7 +190,7 @@ var _template_page_mixin = _interopRequireDefault(__webpack_require__(/*! @/libs
 //
 var NavIndexButton = function NavIndexButton() {
   __webpack_require__.e(/*! require.ensure | libs/components/nav-index-button */ "libs/components/nav-index-button").then((function () {
-    return resolve(__webpack_require__(/*! @/libs/components/nav-index-button.vue */ 341));
+    return resolve(__webpack_require__(/*! @/libs/components/nav-index-button.vue */ 356));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {

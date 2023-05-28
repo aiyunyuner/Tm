@@ -33,7 +33,7 @@
 		</view>
 		<view class="charts-box">
 			<view style="text-align: center;">用户访问TOP5</view>
-			<qiun-data-charts type="bar" :opts="opts4"  :chartData="chartData7" />
+			<qiun-data-charts type="bar" :opts="opts4" :chartData="chartData7" />
 		</view>
 	</view>
 </template>
@@ -105,7 +105,8 @@
 					enableScroll: false,
 					legend: {},
 					xAxis: {
-						disableGrid: true
+						disableGrid: true,
+						fontSize: 10,
 					},
 					yAxis: {
 						data: [{
@@ -157,7 +158,8 @@
 					enableScroll: false,
 					legend: {},
 					xAxis: {
-						disableGrid: true
+						disableGrid: true,
+						fontSize: 10,
 					},
 					yAxis: {
 						gridType: "dash",
@@ -176,9 +178,13 @@
 					color: ["#1890FF", "#91CB74", "#FAC858", "#EE6666", "#73C0DE", "#3CA272", "#FC8452", "#9A60B4",
 						"#ea7ccc"
 					],
+					series: {
+						textSize: 10,
+						fontSize: 8,
+					},
 					padding: [15, 30, 0, 5],
 					enableScroll: false,
-					legend: {},
+					legend: {fontSize:10},
 					xAxis: {
 						boundaryGap: "justify",
 						disableGrid: false,
@@ -186,7 +192,9 @@
 						axisLine: false,
 						max: 40
 					},
-					yAxis: {},
+					yAxis: {
+						fontSize: 8,
+					},
 					extra: {
 						bar: {
 							type: "group",
@@ -215,11 +223,13 @@
 					xAxis: {
 						disableGrid: true,
 						scrollShow: true,
-						itemCount: 4
+						itemCount: 4,
+						fontSize: 10,
 					},
 					yAxis: {
 						gridType: "dash",
-						dashLength: 2
+						dashLength: 2,
+						fontSize: 10,
 					},
 					extra: {
 						line: {
@@ -246,6 +256,7 @@
 			getServerData() {
 				let that = this
 				uni.request({
+					//url: '/api/img/pv7',
 					url: 'http://www.rural.abc/img/pv7', //仅为示例，并非真实接口地址。
 					method: 'POST',
 					header: {
@@ -285,6 +296,7 @@
 				//模拟从服务器获取数据时的延时
 				let that = this
 				uni.request({
+					//url: '/api/img/pieMoules', 
 					url: 'http://www.rural.abc/img/pieMoules', //仅为示例，并非真实接口地址。
 					method: 'POST',
 					header: {
@@ -313,6 +325,7 @@
 
 				let that = this
 				uni.request({
+					//url: '/api/img/sightsPV7',
 					url: 'http://www.rural.abc/img/sightsPV7', //仅为示例，并非真实接口地址。
 					method: 'POST',
 					header: {
@@ -355,6 +368,7 @@
 
 				let that = this
 				uni.request({
+					//url: '/api/img/ruPV7',
 					url: 'http://www.rural.abc/img/ruPV7', //仅为示例，并非真实接口地址。
 					method: 'POST',
 					header: {
@@ -396,6 +410,7 @@
 
 				let that = this
 				uni.request({
+					//url: '/api/img/agPV7', 
 					url: 'http://www.rural.abc/img/agPV7', //仅为示例，并非真实接口地址。
 					method: 'POST',
 					header: {
@@ -437,6 +452,7 @@
 
 				let that = this
 				uni.request({
+					//url: '/api/img/emPV7', 
 					url: 'http://www.rural.abc/img/emPV7', //仅为示例，并非真实接口地址。
 					method: 'POST',
 					header: {
@@ -480,6 +496,7 @@
 
 				let that = this
 				uni.request({
+					// //url: '/api/img/userTOP5', 
 					url: 'http://www.rural.abc/img/userTOP5', //仅为示例，并非真实接口地址。
 					method: 'POST',
 					header: {
@@ -516,15 +533,16 @@
 
 
 			},
-			
-			
-			
-			
+
+
+
+
 			getServerData8() {
-			
-			
+
+
 				let that = this
 				uni.request({
+					// //url: '/api/img/dayPV', 
 					url: 'http://www.rural.abc/img/dayPV', //仅为示例，并非真实接口地址。
 					method: 'POST',
 					header: {
@@ -534,7 +552,7 @@
 					success: function(res) {
 						console.log(res)
 						that.$data.list8 = res.data
-			
+
 						let categories2 = []
 						let data2 = []
 						for (let i in that.$data.list8) {
@@ -558,8 +576,8 @@
 					console.log(abc)
 					this.chartData8 = JSON.parse(JSON.stringify(abc));
 				}, 500);
-			
-			
+
+
 			},
 		}
 	};

@@ -1,6 +1,6 @@
 <template>
 	<view class="tn-safe-area-inset-bottom">
-		<view class="" :style="{paddingTop: vuex_custom_bar_height + 'px'}">
+		<view >
 			<block v-for="(item, index) in sightsList" :key="index">
 				<view class="article-shadow tn-margin">
 					<view class="tn-flex">

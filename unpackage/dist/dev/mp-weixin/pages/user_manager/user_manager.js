@@ -101,10 +101,7 @@ var components
 try {
   components = {
     tnScrollList: function () {
-      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-scroll-list/tn-scroll-list */ "tuniao-ui/components/tn-scroll-list/tn-scroll-list").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-scroll-list/tn-scroll-list.vue */ 472))
-    },
-    tnListCell: function () {
-      return Promise.all(/*! import() | tuniao-ui/components/tn-list-cell/tn-list-cell */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-list-cell/tn-list-cell")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-list-cell/tn-list-cell.vue */ 333))
+      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-scroll-list/tn-scroll-list */ "tuniao-ui/components/tn-scroll-list/tn-scroll-list").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-scroll-list/tn-scroll-list.vue */ 466))
     },
   }
 } catch (e) {
@@ -328,52 +325,9 @@ var _template_page_mixin = _interopRequireDefault(__webpack_require__(/*! @/libs
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var NavIndexButton = function NavIndexButton() {
   __webpack_require__.e(/*! require.ensure | libs/components/nav-index-button */ "libs/components/nav-index-button").then((function () {
-    return resolve(__webpack_require__(/*! @/libs/components/nav-index-button.vue */ 341));
+    return resolve(__webpack_require__(/*! @/libs/components/nav-index-button.vue */ 356));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -385,7 +339,7 @@ var _default = {
   data: function data() {
     return {
       historyData: [{
-        title: '分销中心',
+        title: '用户中心',
         icon: 'organizatio',
         color: 'orange'
       }, {
@@ -422,42 +376,42 @@ var _default = {
   methods: {
     gotoDempl: function gotoDempl() {
       uni.navigateTo({
-        url: "/pages/del_empl/del_empl"
+        url: "/pages/del_empl/del_empl?mu=-2"
       });
     },
     gotoDdyna: function gotoDdyna() {
       uni.navigateTo({
-        url: "/pages/del_dyna/del_dyna"
+        url: "/pages/del_dyna/del_dyna?mu=-2"
       });
     },
     gotoDagri: function gotoDagri() {
       uni.navigateTo({
-        url: "/pages/del_agri/del_agri"
+        url: "/pages/del_agri/del_agri?mu=-2"
       });
     },
     gotoDsight: function gotoDsight() {
       uni.navigateTo({
-        url: "/pages/del_sight/del_sight"
+        url: "/pages/del_sight/del_sight?mu=-2"
       });
     },
     togoEempl: function togoEempl() {
       uni.navigateTo({
-        url: "/pages/edit_list_empl/edit_list_empl"
+        url: "/pages/edit_list_empl/edit_list_empl?mu=-2"
       });
     },
     togoEDyna: function togoEDyna() {
       uni.navigateTo({
-        url: "/pages/edit_list_dyna/edit_list_dyna"
+        url: "/pages/edit_list_dyna/edit_list_dyna?mu=-2"
       });
     },
     togoEAgri: function togoEAgri() {
       uni.navigateTo({
-        url: "/pages/edit_list_agri/edit_list_agri"
+        url: "/pages/edit_list_agri/edit_list_agri?mu=-2"
       });
     },
     togoEsights: function togoEsights() {
       uni.navigateTo({
-        url: "/pages/edit_list/edit_list"
+        url: "/pages/edit_list/edit_list?mu=-2"
       });
     },
     // 跳转到

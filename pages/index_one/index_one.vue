@@ -2,7 +2,7 @@
 	<view class="template-job tn-safe-area-inset-bottom">
 
 		<!-- banner -->
-		<view class="tn-margin-top" :style="{paddingTop: vuex_custom_bar_height + 'px'}">
+		<view >
 			<tn-swiper :list="banner" :height="350" :effect3d="true" mode="round" @click="toInfo"></tn-swiper>
 		</view>
 
@@ -43,7 +43,7 @@
 				<view class="tn-blogger-content__wrap">
 					<view class="tn-padding-top-xs">
 						<!-- 方式一 -->
-						<view class="tn-shadow-blur image-pic" :style="'background-image:url(' + item.image + ')'">
+						<view class="tn-shadow-blur image-pic" :style="'background-image:url(' + item.image + ')'" @click="toInfo2(index)">
 							<view class="image-design">
 							</view>
 						</view>
@@ -197,6 +197,51 @@
 					}
 				}
 			});
+			
+			uni.request({
+				url: 'http://www.rural.abc/sights/getCount',
+				method: 'POST',
+				header: {
+					'token': wx.getStorageSync('token'), //自定义请求头信息
+					'content-type': "application/x-www-form-urlencoded"
+				},
+				success: function(res) {
+					that.$data.tuniaoData[0].value = res.data
+				}
+			});
+			uni.request({
+				url: 'http://www.rural.abc/agricultural/count',
+				method: 'POST',
+				header: {
+					'token': wx.getStorageSync('token'), //自定义请求头信息
+					'content-type': "application/x-www-form-urlencoded"
+				},
+				success: function(res) {
+					that.$data.tuniaoData[1].value = res.data
+				}
+			});
+			uni.request({
+				url: 'http://www.rural.abc/rural/count',
+				method: 'POST',
+				header: {
+					'token': wx.getStorageSync('token'), //自定义请求头信息
+					'content-type': "application/x-www-form-urlencoded"
+				},
+				success: function(res) {
+					that.$data.tuniaoData[2].value = res.data
+				}
+			});
+			uni.request({
+				url: 'http://www.rural.abc/employment/count',
+				method: 'POST',
+				header: {
+					'token': wx.getStorageSync('token'), //自定义请求头信息
+					'content-type': "application/x-www-form-urlencoded"
+				},
+				success: function(res) {
+					that.$data.tuniaoData[3].value = res.data
+				}
+			});
 
 			uni.request({
 				url: "http://www.rural.abc/sights/beast", //仅为示例，并非真实接口地址。
@@ -222,6 +267,12 @@
 				let that = this
 				uni.navigateTo({
 					url: `/pages/info/info?sid=${that.$data.lis[index].id}`
+				})
+			},
+			toInfo2(index) {
+				let that = this
+				uni.navigateTo({
+					url: `/pages/info/info?sid=${that.$data.BestList[index].id}`
 				})
 			},
 			goPage(e) {
@@ -465,152 +516,157 @@
 		display: inline-block;
 		margin: 15rpx auto 15rpx;
 	}
-	
-	
-	
+
+
+
 	@import '@/static/css/templatePage/custom_nav_bar.scss';
-	.template-design{
+
+	.template-design {}
+
+	/* 图标容器10 start */
+	.icon10 {
+		&__item {
+			width: 30%;
+			background-color: #FFFFFF;
+			border-radius: 10rpx;
+			padding: 30rpx;
+			margin: 20rpx 10rpx;
+			transform: scale(1);
+			transition: transform 0.3s linear;
+			transform-origin: center center;
+
+			&--icon {
+				width: 84rpx;
+				height: 65rpx;
+				font-size: 45rpx;
+				border-radius: 200rpx;
+				margin-bottom: 18rpx;
+				position: relative;
+				z-index: 1;
+
+				&::after {
+					content: " ";
+					position: absolute;
+					z-index: -1;
+					width: 100%;
+					height: 100%;
+					left: 0;
+					bottom: 0;
+					border-radius: inherit;
+					opacity: 1;
+					transform: scale(1, 1);
+					background-size: 100% 100%;
+					background-image: url(https://tnuiimage.tnkjapp.com/cool_bg_image/icon_bg6.png);
+				}
+			}
+		}
 	}
-	  /* 图标容器10 start */
-	    .icon10 {
-	      &__item {
-	        width: 30%;
-	        background-color: #FFFFFF;
-	        border-radius: 10rpx;
-	        padding: 30rpx;
-	        margin: 20rpx 10rpx;
-	        transform: scale(1);
-	        transition: transform 0.3s linear;
-	        transform-origin: center center;
-	        
-	        &--icon {
-	          width: 84rpx;
-	          height: 65rpx;
-	          font-size: 45rpx;
-	          border-radius: 200rpx;
-	          margin-bottom: 18rpx;
-	          position: relative;
-	          z-index: 1;
-	          
-	          &::after {
-	            content: " ";
-	            position: absolute;
-	            z-index: -1;
-	            width: 100%;
-	            height: 100%;
-	            left: 0;
-	            bottom: 0;
-	            border-radius: inherit;
-	            opacity: 1;
-	            transform: scale(1, 1);
-	            background-size: 100% 100%;
-	            background-image: url(https://tnuiimage.tnkjapp.com/cool_bg_image/icon_bg6.png);
-	          }
-	        }
-	      }
-	    }
-	  /* 图标容器10 end */
-	  
-	  /* 文章内容 start*/
-	  .tn-blogger-content {
-	    &__wrap {
-	      padding: 30rpx;
-	    }
-	    
-	    &__info {
-	      &__btn {
-	        margin-right: -12rpx;
-	        opacity: 0.5;
-	      }
-	    }
-	    
-	    &__label {
-	      &__item {
-	        line-height: 45rpx;
-	        padding: 0 20rpx;
-	        margin: 5rpx 18rpx 0 0;
-	        
-	        &--prefix {
-	          color: #00FFC8;
-	          padding-right: 10rpx;
-	        }
-	      }
-	      
-	      &__desc {
-	        line-height: 55rpx;
-	      }
-	    }
-	    
-	    &__main-image {
-	      box-shadow: 0rpx 5rpx 40rpx 0rpx rgba(43, 158, 246, 0.2);
-	      border-radius: 16rpx;
-	      
-	      &--1 {
-	        max-width: 690rpx;
-	        min-width: 690rpx;
-	        max-height: 400rpx;
-	        min-height: 400rpx;
-	      }
-	      
-	      &--2 {
-	        max-width: 260rpx;
-	        max-height: 260rpx;
-	      }
-	      
-	      &--3 {
-	        height: 212rpx;
-	        width: 100%;
-	      }
-	    }
-	    
-	    &__count-icon {
-	      font-size: 40rpx;
-	      padding-right: 5rpx;
-	    }
-	  }
-	  
-	  .image-design{
-	    padding: 180rpx 0rpx;
-	    font-size: 40rpx;
-	    font-weight: 300;
-	    position: relative;
-	  }
-	  .image-pic{
-	    background-size: cover;
-	    background-repeat:no-repeat;
-	    // background-attachment:fixed;
-	    background-position:top;
-	    border-radius: 10rpx;
-	  }
-	  /* 文章内容 end*/
-	   
-	   /* 间隔线 start*/
-	  .tn-strip-bottom {
-	   width: 100%;
-	   border-bottom: 20rpx solid rgba(241, 241, 241, 0.3);
-	  }
-	   /* 间隔线 end*/
-	
+
+	/* 图标容器10 end */
+
+	/* 文章内容 start*/
+	.tn-blogger-content {
+		&__wrap {
+			padding: 30rpx;
+		}
+
+		&__info {
+			&__btn {
+				margin-right: -12rpx;
+				opacity: 0.5;
+			}
+		}
+
+		&__label {
+			&__item {
+				line-height: 45rpx;
+				padding: 0 20rpx;
+				margin: 5rpx 18rpx 0 0;
+
+				&--prefix {
+					color: #00FFC8;
+					padding-right: 10rpx;
+				}
+			}
+
+			&__desc {
+				line-height: 55rpx;
+			}
+		}
+
+		&__main-image {
+			box-shadow: 0rpx 5rpx 40rpx 0rpx rgba(43, 158, 246, 0.2);
+			border-radius: 16rpx;
+
+			&--1 {
+				max-width: 690rpx;
+				min-width: 690rpx;
+				max-height: 400rpx;
+				min-height: 400rpx;
+			}
+
+			&--2 {
+				max-width: 260rpx;
+				max-height: 260rpx;
+			}
+
+			&--3 {
+				height: 212rpx;
+				width: 100%;
+			}
+		}
+
+		&__count-icon {
+			font-size: 40rpx;
+			padding-right: 5rpx;
+		}
+	}
+
+	.image-design {
+		padding: 180rpx 0rpx;
+		font-size: 40rpx;
+		font-weight: 300;
+		position: relative;
+	}
+
+	.image-pic {
+		background-size: cover;
+		background-repeat: no-repeat;
+		// background-attachment:fixed;
+		background-position: top;
+		border-radius: 10rpx;
+	}
+
+	/* 文章内容 end*/
+
+	/* 间隔线 start*/
+	.tn-strip-bottom {
+		width: 100%;
+		border-bottom: 20rpx solid rgba(241, 241, 241, 0.3);
+	}
+
+	/* 间隔线 end*/
+
 	/* 底部tabbar start*/
-	.footerfixed{
-	 position: fixed;
-	 width: 100%;
-	 bottom: 0;
-	 z-index: 999;
-	 background-color: #FFFFFF;
-	 box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(0, 0, 0, 0.07);
+	.footerfixed {
+		position: fixed;
+		width: 100%;
+		bottom: 0;
+		z-index: 999;
+		background-color: #FFFFFF;
+		box-shadow: 0rpx 0rpx 30rpx 0rpx rgba(0, 0, 0, 0.07);
 	}
-	
+
 	.tabbar {
-	  display: flex;
-	  align-items: center;
-	  min-height: 110rpx;
-	  justify-content: space-between;
+		display: flex;
+		align-items: center;
+		min-height: 110rpx;
+		justify-content: space-between;
 		padding: 0;
 		height: calc(110rpx + env(safe-area-inset-bottom) / 2);
 		padding-bottom: calc(env(safe-area-inset-bottom) / 2);
 	}
-	
+
 	.tabbar .action {
 		font-size: 22rpx;
 		position: relative;
@@ -623,7 +679,7 @@
 		margin: 0;
 		overflow: initial;
 	}
-	
+
 	.tabbar .action .bar-icon {
 		width: 100rpx;
 		position: relative;
@@ -633,11 +689,10 @@
 		text-align: center;
 		font-size: 42rpx;
 	}
-	
+
 	.tabbar .action .bar-icon image {
 		width: 50rpx;
 		height: 50rpx;
 		display: inline-block;
 	}
-	  
 </style>

@@ -120,7 +120,7 @@
 							class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-cool-bg-color-16 tn-color-white">
 							<view class="tn-icon-wechat-fill"></view>
 						</view>
-						<view class="tn-margin-left-sm tn-flex-1" @click="gotoabc()">合作勾搭</view>
+						<view class="tn-margin-left-sm tn-flex-1" @click="gotoabc()">数据分析</view>
 						<view class="tn-margin-left-sm tn-color-cyan tn-icon-link"></view>
 					</view>
 				</tn-list-cell>
@@ -130,7 +130,7 @@
 							class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-cool-bg-color-8 tn-color-white">
 							<view class="tn-icon-message-fill"></view>
 						</view>
-						<view class="tn-margin-left-sm tn-flex-1">问题反馈</view>
+						<view class="tn-margin-left-sm tn-flex-1" @click="gotoAllinfo()">管理全部数据</view>
 						<view class="tn-margin-left-sm tn-color-blue tn-icon-copy-fill"></view>
 					</view>
 				</tn-list-cell>
@@ -159,7 +159,7 @@
 			</view>
 
 		</view>
-
+		<tn-toast ref="toast"></tn-toast>
 
 		<!-- 	<tn-tabbar v-model="currentIndex" :list="tabbarList" activeColor="#838383" inactiveColor="#AAAAAA"
 			activeIconColor="tn-cool-bg-color-7" :animation="true" :safeAreaInsetBottom="true" @change="switchTabbar">
@@ -225,10 +225,59 @@
 			this.$data.name = wx.getStorageSync('name')
 		},
 		methods: {
+			gotoAllinfo() {
+				let that = this
+				uni.request({
+					url: "http://www.rural.abc/user/isManager", //仅为示例，并非真实接口地址。
+					method: 'POST',
+					header: {
+						'token': wx.getStorageSync('token'), //自定义请求头信息
+						'content-type': "application/x-www-form-urlencoded"
+					},
+					success: function(res) {
+						if (res.data) {
+							uni.navigateTo({
+								url: "/pages/man_all/man_all"
+							})
+						} else {
+							that.$refs.toast.show({
+								title: '',
+								content: '没有访问权限！',
+								icon: 'close-circle',
+								image: '',
+								duration: 1500
+							})
+						}
+					}
+				});
+			},
 			gotoabc() {
-				uni.navigateTo({
-					url: "/pages/ecs/ecs"
-				})
+				let that = this
+				uni.request({
+					// url: "/api/user/isManager", 
+					url: "http://www.rural.abc/user/isManager", //仅为示例，并非真实接口地址。
+					method: 'POST',
+					header: {
+						'token': wx.getStorageSync('token'), //自定义请求头信息
+						'content-type': "application/x-www-form-urlencoded"
+					},
+					success: function(res) {
+						if (res.data) {
+							uni.navigateTo({
+								url: "/pages/ecs/ecs"
+							})
+						} else {
+							that.$refs.toast.show({
+								title: '',
+								content: '没有访问权限！',
+								icon: 'close-circle',
+								image: '',
+								duration: 1500
+							})
+						}
+					}
+				});
+				
 			},
 			gotoManger() {
 				uni.navigateTo({

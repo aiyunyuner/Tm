@@ -3,6 +3,7 @@
   "enablePullDownRefresh": false,
   "usingComponents": {
     "tn-list-cell": "/tuniao-ui/components/tn-list-cell/tn-list-cell",
+    "tn-toast": "/tuniao-ui/components/tn-toast/tn-toast",
     "nav-index-button": "/libs/components/nav-index-button"
   }
 }

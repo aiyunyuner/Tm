@@ -12,11 +12,11 @@
 				{{sightInfor.desc}}
 			</view>
 		</view>
-		<view style="margin: 1ch;text-align: center;"
-			:class="[`tn-bg-${sightInfor.color}--light tn-color-${sightInfor.color}`] ">地 点</view>
-		<view style="margin: 1ch;text-align: center;">
+		<!-- <view style="margin: 1ch;text-align: center;"
+			:class="[`tn-bg-${sightInfor.color}--light tn-color-${sightInfor.color}`] ">地 点</view> -->
+		<!-- <view style="margin: 1ch;text-align: center;">
 			{{sightInfor.where}}
-		</view>
+		</view> -->
 		<view style="margin: 1ch;text-align: center;"
 			:class="[`tn-bg-${sightInfor.color}--light tn-color-${sightInfor.color}`] ">其 他</view>
 		<view style="margin: 1ch;text-align: center;">

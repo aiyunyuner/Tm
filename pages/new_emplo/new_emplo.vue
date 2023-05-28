@@ -1,8 +1,7 @@
 <template>
 	<view class="components-form">
 
-		<!-- 顶部自定义导航 -->
-		<tn-nav-bar fixed>Form表单</tn-nav-bar>
+		
 
 		<!-- 页面内容 -->
 		<view :style="{paddingTop: vuex_custom_bar_height + 'px'}">
@@ -12,7 +11,7 @@
 					:labelWidth="labelWidth" :labelAlign="labelAlign">
 					<tn-form-item label="名称" prop="name" :required="true" :labelPosition="labelPosition"
 						:labelAlign="labelAlign">
-						<tn-input v-model="model.name" type="text" placeholder="请输入名称" :border="border"></tn-input>
+						<tn-input v-model="model.name" type="text" placeholder="请输入岗位名称" :border="border"></tn-input>
 					</tn-form-item>
 
 					<tn-form-item label="介绍" :required="true" prop="desc" :labelPosition="labelPosition"
@@ -27,7 +26,7 @@
 							:selectOpen="selectShow2" @click="selectShow2 = true"></tn-input>
 					</tn-form-item>
 					<tn-form-item label="类型" prop="type" :labelPosition="labelPosition" :labelAlign="labelAlign">
-						<tn-input v-model="model.type" type="text" placeholder="请输入活动类型" :border="border"></tn-input>
+						<tn-input v-model="model.type" type="text" placeholder="请输入岗位类型" :border="border"></tn-input>
 					</tn-form-item>
 				
 					<tn-form-item label="上传图片" prop="photo" :labelPosition="labelPosition" :labelAlign="labelAlign">
@@ -155,36 +154,14 @@
 				rules: {
 					name: [{
 							required: true,
-							message: '请输入用户名',
+							message: '请输入岗位名称',
 							trigger: 'blur'
 						},
 						{
-							min: 3,
-							max: 5,
-							message: '姓名长度在3到5个字符',
+							min: 2,
+							max: 10,
+							message: '姓名长度在2到10个字符',
 							trigger: ['change', 'blur'],
-						},
-						{
-							// 此为同步验证，可以直接返回true或者false，如果是异步验证，稍微不同，见下方说明
-							validator: (rule, value, callback) => {
-								return this.$tn.test.chinese(value);
-							},
-							message: '姓名必须为中文',
-							// 触发器可以同时用blur和change，二者之间用英文逗号隔开
-							trigger: ['change', 'blur'],
-						},
-						{
-							// 异步验证需要通过调用callback()，并且在里面抛出new Error()
-							// 抛出的内容为需要提示的信息，和其他方式的message属性的提示一样
-							asyncValidator: (rule, value, callback) => {
-								if (value === '图鸟') {
-									callback(new Error('姓名重复'));
-								} else {
-									// 没有错误，也要执行callback()回调
-									callback();
-								}
-							},
-							trigger: ['blur'],
 						}
 					],
 					sex: [{
@@ -198,14 +175,14 @@
 						trigger: 'change'
 					}],
 					desc: [{
-							min: 5,
-							message: '简介不能少于5个字',
+							min: 1,
+							message: '简介不能少于1个字',
 							trigger: 'change'
 						},
 						{
 							// 正则表达式验证演示
-							pattern: /^[\u4e00-\u9fa5]+$/gi,
-							message: '简介只能包含中文',
+							pattern: /^.+$/,
+							message: '简介不能少于1个字',
 							trigger: 'change'
 						}
 					],
@@ -457,7 +434,12 @@
 										image: '',
 										duration: 1500
 									})
-									uni.navigateBack();
+									
+									
+									setTimeout(() => {
+										uni.navigateBack();
+									}, 1000);
+									
 								} else {
 									that.$refs.toast.show({
 										title: '发布失败',

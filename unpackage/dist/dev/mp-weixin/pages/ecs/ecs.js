@@ -101,7 +101,7 @@ var components
 try {
   components = {
     qiunDataCharts: function () {
-      return Promise.all(/*! import() | uni_modules/qiun-data-charts/components/qiun-data-charts/qiun-data-charts */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/qiun-data-charts/components/qiun-data-charts/qiun-data-charts")]).then(__webpack_require__.bind(null, /*! @/uni_modules/qiun-data-charts/components/qiun-data-charts/qiun-data-charts.vue */ 486))
+      return Promise.all(/*! import() | uni_modules/qiun-data-charts/components/qiun-data-charts/qiun-data-charts */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/qiun-data-charts/components/qiun-data-charts/qiun-data-charts")]).then(__webpack_require__.bind(null, /*! @/uni_modules/qiun-data-charts/components/qiun-data-charts/qiun-data-charts.vue */ 480))
     },
   }
 } catch (e) {
@@ -268,7 +268,8 @@ var _default = {
         enableScroll: false,
         legend: {},
         xAxis: {
-          disableGrid: true
+          disableGrid: true,
+          fontSize: 10
         },
         yAxis: {
           data: [{
@@ -316,7 +317,8 @@ var _default = {
         enableScroll: false,
         legend: {},
         xAxis: {
-          disableGrid: true
+          disableGrid: true,
+          fontSize: 10
         },
         yAxis: {
           gridType: "dash",
@@ -332,9 +334,15 @@ var _default = {
       },
       opts4: {
         color: ["#1890FF", "#91CB74", "#FAC858", "#EE6666", "#73C0DE", "#3CA272", "#FC8452", "#9A60B4", "#ea7ccc"],
+        series: {
+          textSize: 10,
+          fontSize: 8
+        },
         padding: [15, 30, 0, 5],
         enableScroll: false,
-        legend: {},
+        legend: {
+          fontSize: 10
+        },
         xAxis: {
           boundaryGap: "justify",
           disableGrid: false,
@@ -342,7 +350,9 @@ var _default = {
           axisLine: false,
           max: 40
         },
-        yAxis: {},
+        yAxis: {
+          fontSize: 8
+        },
         extra: {
           bar: {
             type: "group",
@@ -366,11 +376,13 @@ var _default = {
         xAxis: {
           disableGrid: true,
           scrollShow: true,
-          itemCount: 4
+          itemCount: 4,
+          fontSize: 10
         },
         yAxis: {
           gridType: "dash",
-          dashLength: 2
+          dashLength: 2,
+          fontSize: 10
         },
         extra: {
           line: {
@@ -397,6 +409,7 @@ var _default = {
       var _this = this;
       var that = this;
       uni.request({
+        //url: '/api/img/pv7',
         url: 'http://www.rural.abc/img/pv7',
         //仅为示例，并非真实接口地址。
         method: 'POST',
@@ -436,6 +449,7 @@ var _default = {
       //模拟从服务器获取数据时的延时
       var that = this;
       uni.request({
+        //url: '/api/img/pieMoules', 
         url: 'http://www.rural.abc/img/pieMoules',
         //仅为示例，并非真实接口地址。
         method: 'POST',
@@ -463,6 +477,7 @@ var _default = {
       var _this3 = this;
       var that = this;
       uni.request({
+        //url: '/api/img/sightsPV7',
         url: 'http://www.rural.abc/img/sightsPV7',
         //仅为示例，并非真实接口地址。
         method: 'POST',
@@ -502,6 +517,7 @@ var _default = {
       var _this4 = this;
       var that = this;
       uni.request({
+        //url: '/api/img/ruPV7',
         url: 'http://www.rural.abc/img/ruPV7',
         //仅为示例，并非真实接口地址。
         method: 'POST',
@@ -541,6 +557,7 @@ var _default = {
       var _this5 = this;
       var that = this;
       uni.request({
+        //url: '/api/img/agPV7', 
         url: 'http://www.rural.abc/img/agPV7',
         //仅为示例，并非真实接口地址。
         method: 'POST',
@@ -580,6 +597,7 @@ var _default = {
       var _this6 = this;
       var that = this;
       uni.request({
+        //url: '/api/img/emPV7', 
         url: 'http://www.rural.abc/img/emPV7',
         //仅为示例，并非真实接口地址。
         method: 'POST',
@@ -619,6 +637,7 @@ var _default = {
       var _this7 = this;
       var that = this;
       uni.request({
+        // //url: '/api/img/userTOP5', 
         url: 'http://www.rural.abc/img/userTOP5',
         //仅为示例，并非真实接口地址。
         method: 'POST',
@@ -658,6 +677,7 @@ var _default = {
       var _this8 = this;
       var that = this;
       uni.request({
+        // //url: '/api/img/dayPV', 
         url: 'http://www.rural.abc/img/dayPV',
         //仅为示例，并非真实接口地址。
         method: 'POST',

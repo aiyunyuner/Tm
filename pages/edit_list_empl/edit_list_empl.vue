@@ -42,6 +42,7 @@
 	export default {
 		data() {
 			return {
+				mu: '',
 				total: null, //总共多少条数据
 				formData: {
 					pageSize: 6, //每页10条数据
@@ -52,6 +53,9 @@
 				show: false,
 
 			}
+		},
+		onLoad: function(e) {
+			this.$data.mu = e.mu;
 		},
 		onReachBottom() {
 			let that = this
@@ -68,7 +72,8 @@
 			this.$data.formData.page = 1;
 			let that = this;
 			uni.request({
-				url: 'http://www.rural.abc/employment/me', //仅为示例，并非真实接口地址。
+				url: 0 > that.mu ? 'http://www.rural.abc/employment/me' :
+				'http://www.rural.abc/employment/more', //仅为示例，并非真实接口地址。
 				method: 'POST',
 				data: {
 					start: that.$data.formData.page,
@@ -85,7 +90,8 @@
 				}
 			});
 			uni.request({
-				url: 'http://www.rural.abc/employment/meCunt',
+				url: 0 > that.mu ? 'http://www.rural.abc/employment/meCunt' :
+					'http://www.rural.abc/employment/count',
 				method: 'POST',
 				header: {
 					'token': wx.getStorageSync('token'), //自定义请求头信息
@@ -106,7 +112,8 @@
 			getData() {
 				let that = this
 				uni.request({
-					url: "http://www.rural.abc/employment/me",
+					url: 0 > that.mu ? 'http://www.rural.abc/employment/me' :
+						'http://www.rural.abc/employment/more',
 					method: 'POST',
 					data: {
 						start: that.$data.formData.page,

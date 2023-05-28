@@ -210,7 +210,6 @@ var _default = {
   },
   methods: {
     goto1: function goto1(e) {
-      console.log("11111111");
       uni.navigateTo({
         url: '/pages/new_sights/new_sights'
       });

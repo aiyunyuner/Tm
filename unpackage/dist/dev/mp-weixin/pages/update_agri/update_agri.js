@@ -101,28 +101,28 @@ var components
 try {
   components = {
     tnFormItem: function () {
-      return Promise.all(/*! import() | tuniao-ui/components/tn-form-item/tn-form-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-form-item/tn-form-item")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-form-item/tn-form-item.vue */ 384))
+      return Promise.all(/*! import() | tuniao-ui/components/tn-form-item/tn-form-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-form-item/tn-form-item")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-form-item/tn-form-item.vue */ 392))
     },
     tnForm: function () {
-      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-form/tn-form */ "tuniao-ui/components/tn-form/tn-form").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-form/tn-form.vue */ 443))
+      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-form/tn-form */ "tuniao-ui/components/tn-form/tn-form").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-form/tn-form.vue */ 437))
     },
     tnInput: function () {
-      return Promise.all(/*! import() | tuniao-ui/components/tn-input/tn-input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-input/tn-input")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-input/tn-input.vue */ 355))
+      return Promise.all(/*! import() | tuniao-ui/components/tn-input/tn-input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-input/tn-input")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-input/tn-input.vue */ 370))
     },
     tnImageUpload: function () {
-      return Promise.all(/*! import() | tuniao-ui/components/tn-image-upload/tn-image-upload */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-image-upload/tn-image-upload")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-image-upload/tn-image-upload.vue */ 448))
+      return Promise.all(/*! import() | tuniao-ui/components/tn-image-upload/tn-image-upload */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-image-upload/tn-image-upload")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-image-upload/tn-image-upload.vue */ 442))
     },
     tnButton: function () {
-      return Promise.all(/*! import() | tuniao-ui/components/tn-button/tn-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-button/tn-button")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-button/tn-button.vue */ 394))
+      return Promise.all(/*! import() | tuniao-ui/components/tn-button/tn-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-button/tn-button")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-button/tn-button.vue */ 402))
     },
     tnPicker: function () {
-      return Promise.all(/*! import() | tuniao-ui/components/tn-picker/tn-picker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-picker/tn-picker")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-picker/tn-picker.vue */ 455))
+      return Promise.all(/*! import() | tuniao-ui/components/tn-picker/tn-picker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-picker/tn-picker")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-picker/tn-picker.vue */ 449))
     },
     tnSelect: function () {
-      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-select/tn-select */ "tuniao-ui/components/tn-select/tn-select").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-select/tn-select.vue */ 465))
+      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-select/tn-select */ "tuniao-ui/components/tn-select/tn-select").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-select/tn-select.vue */ 459))
     },
     tnToast: function () {
-      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-toast/tn-toast */ "tuniao-ui/components/tn-toast/tn-toast").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-toast/tn-toast.vue */ 370))
+      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-toast/tn-toast */ "tuniao-ui/components/tn-toast/tn-toast").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-toast/tn-toast.vue */ 349))
     },
   }
 } catch (e) {
@@ -249,7 +249,6 @@ exports.default = void 0;
 //
 var _default = {
   data: function data() {
-    var _this = this;
     return {
       action: 'http://www.rural.abc/img/upload',
       selectColor: [{
@@ -282,29 +281,6 @@ var _default = {
       selectShow: false,
       selectShow2: false,
       codeTips: '获取验证码',
-      checkboxList: [{
-        name: '苹果',
-        disabled: false
-      }, {
-        name: '橘子',
-        disabled: false
-      }, {
-        name: '香蕉',
-        disabled: false
-      }, {
-        name: '榴莲',
-        disabled: true
-      }],
-      radioList: [{
-        name: '微信',
-        disabled: false
-      }, {
-        name: '支付宝',
-        disabled: true
-      }, {
-        name: '云闪付',
-        disabled: false
-      }],
       actionSheetList: [{
         text: '男'
       }, {
@@ -335,83 +311,22 @@ var _default = {
       rules: {
         name: [{
           required: true,
-          message: '请输入用户名',
+          message: '请输入名称',
           trigger: 'blur'
         }, {
           min: 3,
-          max: 5,
-          message: '姓名长度在3到5个字符',
+          max: 10,
+          message: '名称长度在3到10个字符',
           trigger: ['change', 'blur']
-        }, {
-          // 此为同步验证，可以直接返回true或者false，如果是异步验证，稍微不同，见下方说明
-          validator: function validator(rule, value, callback) {
-            return _this.$tn.test.chinese(value);
-          },
-          message: '姓名必须为中文',
-          // 触发器可以同时用blur和change，二者之间用英文逗号隔开
-          trigger: ['change', 'blur']
-        }, {
-          // 异步验证需要通过调用callback()，并且在里面抛出new Error()
-          // 抛出的内容为需要提示的信息，和其他方式的message属性的提示一样
-          asyncValidator: function asyncValidator(rule, value, callback) {
-            if (value === '图鸟') {
-              callback(new Error('姓名重复'));
-            } else {
-              // 没有错误，也要执行callback()回调
-              callback();
-            }
-          },
-          trigger: ['blur']
-        }],
-        sex: [{
-          required: true,
-          message: '请选择性别',
-          trigger: 'change'
-        }],
-        phone: [{
-          required: true,
-          message: '请输入手机号码',
-          trigger: 'change'
         }],
         desc: [{
-          min: 5,
-          message: '简介不能少于5个字',
+          min: 1,
+          message: '简介不能少于1个字',
           trigger: 'change'
         }, {
           // 正则表达式验证演示
-          pattern: /^[\u4e00-\u9fa5]+$/gi,
-          message: '简介只能包含中文',
-          trigger: 'change'
-        }],
-        password: [{
-          required: true,
-          message: '请输入密码',
-          trigger: ['change', 'blur']
-        }, {
-          pattern: /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]+\S{5,12}$/,
-          message: '需同时含有字母和数字，长度在6-12之间',
-          trigger: ['change', 'blur']
-        }],
-        rePassword: [{
-          required: true,
-          message: '请再次输入密码',
-          trigger: ['change', 'blur']
-        }, {
-          validator: function validator(rule, value, callback) {
-            return value === _this.model.password;
-          },
-          message: '两次输入的密码不相等',
-          trigger: ['change', 'blur']
-        }],
-        fruit: [{
-          required: true,
-          message: '请选择水果',
-          trigger: 'change',
-          type: 'array'
-        }],
-        payType: [{
-          required: true,
-          message: '请选择支付方式',
+          pattern: /^.+$/,
+          message: '简介不能少于1个字',
           trigger: 'change'
         }],
         region: [{
@@ -573,7 +488,7 @@ var _default = {
     },
     // 表单提交
     submit: function submit() {
-      var _this2 = this;
+      var _this = this;
       var that = this;
       this.$refs.form.validate(function (valid) {
         if (valid) {
@@ -587,13 +502,13 @@ var _default = {
               'content-type': "application/x-www-form-urlencoded"
             },
             data: {
-              id: _this2.$data.model.id,
-              name: _this2.$data.model.name,
-              where: _this2.$data.model.where,
-              type: _this2.$data.model.type,
-              image: _this2.$data.model.image,
-              desc: _this2.$data.model.desc,
-              color: _this2.$data.model.color
+              id: _this.$data.model.id,
+              name: _this.$data.model.name,
+              where: _this.$data.model.where,
+              type: _this.$data.model.type,
+              image: _this.$data.model.image,
+              desc: _this.$data.model.desc,
+              color: _this.$data.model.color
             },
             success: function success(res) {
               // con

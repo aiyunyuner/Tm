@@ -80,13 +80,13 @@ var components
 try {
   components = {
     tnInput: function () {
-      return Promise.all(/*! import() | tuniao-ui/components/tn-input/tn-input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-input/tn-input")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-input/tn-input.vue */ 355))
+      return Promise.all(/*! import() | tuniao-ui/components/tn-input/tn-input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-input/tn-input")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-input/tn-input.vue */ 370))
     },
     tnVerificationCode: function () {
-      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-verification-code/tn-verification-code */ "tuniao-ui/components/tn-verification-code/tn-verification-code").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-verification-code/tn-verification-code.vue */ 363))
+      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-verification-code/tn-verification-code */ "tuniao-ui/components/tn-verification-code/tn-verification-code").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-verification-code/tn-verification-code.vue */ 378))
     },
     tnToast: function () {
-      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-toast/tn-toast */ "tuniao-ui/components/tn-toast/tn-toast").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-toast/tn-toast.vue */ 370))
+      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-toast/tn-toast */ "tuniao-ui/components/tn-toast/tn-toast").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-toast/tn-toast.vue */ 349))
     },
   }
 } catch (e) {
@@ -341,8 +341,8 @@ var _default = {
     login: function login() {
       var that = this;
       var requestTask = uni.request({
-        url: 'http://www.rural.abc/user/userlogin',
-        //仅为示例，并非真实接口地址。
+        url: '/api/user/userlogin',
+        //url: 'http://www.rural.abc/user/userlogin', //仅为示例，并非真实接口地址。
         method: 'POST',
         header: {
           'custom-header': 'hello',

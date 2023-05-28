@@ -186,6 +186,7 @@ var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/
 var _default = {
   data: function data() {
     return {
+      mu: "",
       scrollList: "",
       total: null,
       //总共多少条数据
@@ -211,6 +212,9 @@ var _default = {
       // console.log('已加载全部数据')
     }
   },
+  onLoad: function onLoad(e) {
+    this.$data.mu = e.mu;
+  },
   onShow: function onShow() {
     this.$data.formData.page = 1;
     var that = this;
@@ -229,7 +233,7 @@ var _default = {
       }
     });
     uni.request({
-      url: 'http://www.rural.abc/sights/me',
+      url: 0 > that.mu ? 'http://www.rural.abc/sights/me' : 'http://www.rural.abc/sights/getMore',
       //仅为示例，并非真实接口地址。
       method: 'POST',
       data: {
@@ -247,7 +251,7 @@ var _default = {
       }
     });
     uni.request({
-      url: 'http://www.rural.abc/sights/meCunt',
+      url: 0 > that.mu ? 'http://www.rural.abc/sights/meCunt' : 'http://www.rural.abc/sights/getCount',
       method: 'POST',
       header: {
         'token': wx.getStorageSync('token'),
@@ -269,7 +273,7 @@ var _default = {
     getData: function getData() {
       var that = this;
       uni.request({
-        url: "http://www.rural.abc/sights/me",
+        url: 0 > that.mu ? 'http://www.rural.abc/sights/me' : 'http://www.rural.abc/sights/getMore',
         method: 'POST',
         data: {
           start: that.$data.formData.page,

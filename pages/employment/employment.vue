@@ -1,29 +1,10 @@
 <template>
 	<view class="tn-safe-area-inset-bottom">
-		<tn-nav-bar :isBack="false" :bottomShadow="false" backgroundColor="none">
-			<view class="custom-nav tn-flex tn-flex-col-center tn-flex-row-left">
-				<!-- 图标logo -->
-				<view class="custom-nav__back">
-					<view class="logo-pic tn-shadow-blur"
-						style="background-image:url('https://tnuiimage.tnkjapp.com/blogger/avatar_2.jpeg')">
-						<view class="logo-image">
-							<tn-badge backgroundColor="#E72F8C" :dot="true" :radius="16" :absolute="true"
-								:translateCenter="false">
-							</tn-badge>
-						</view>
-					</view>
-				</view>
-				<view class="tn-margin-top tn-margin-left">
-					<tn-tabs :list="scrollList" :current="current" @change="tabChange" activeColor="#000" bold="true"
-						:fontSize="36"></tn-tabs>
-				</view>
-			</view>
-
-		</tn-nav-bar>
+		
 
 
 		<!-- 不建议写时间，因为写了时间，你就要经常更新文章了鸭-->
-		<view class="" :style="{paddingTop: vuex_custom_bar_height + 'px'}">
+		<view >
 			<block v-for="(item, index) in sightsList" :key="index">
 				<view class="article-shadow tn-margin">
 					<view class="tn-flex">
@@ -40,7 +21,7 @@
 							</view>
 							<view class="tn-padding-top-xs">
 								<text class=" tn-text-sm tn-color-gray clamp-text-1">
-									{{ item.where }}
+									{{ item.desc }}
 								</text>
 							</view>
 							<view class="tn-flex tn-flex-row-between tn-flex-col-between">

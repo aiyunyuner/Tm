@@ -31,7 +31,8 @@
     "pages/del_agri/del_agri",
     "pages/del_dyna/del_dyna",
     "pages/del_empl/del_empl",
-    "pages/ecs/ecs"
+    "pages/ecs/ecs",
+    "pages/man_all/man_all"
   ],
   "subPackages": [],
   "window": {

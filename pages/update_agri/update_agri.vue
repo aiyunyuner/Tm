@@ -91,36 +91,7 @@
 				selectShow: false,
 				selectShow2: false,
 				codeTips: '获取验证码',
-				checkboxList: [{
-						name: '苹果',
-						disabled: false
-					},
-					{
-						name: '橘子',
-						disabled: false
-					},
-					{
-						name: '香蕉',
-						disabled: false
-					},
-					{
-						name: '榴莲',
-						disabled: true
-					}
-				],
-				radioList: [{
-						name: '微信',
-						disabled: false
-					},
-					{
-						name: '支付宝',
-						disabled: true
-					},
-					{
-						name: '云闪付',
-						disabled: false
-					}
-				],
+				
 				actionSheetList: [{
 						text: '男'
 					},
@@ -154,95 +125,29 @@
 				rules: {
 					name: [{
 							required: true,
-							message: '请输入用户名',
+							message: '请输入名称',
 							trigger: 'blur'
 						},
 						{
 							min: 3,
-							max: 5,
-							message: '姓名长度在3到5个字符',
+							max: 10,
+							message: '名称长度在3到10个字符',
 							trigger: ['change', 'blur'],
-						},
-						{
-							// 此为同步验证，可以直接返回true或者false，如果是异步验证，稍微不同，见下方说明
-							validator: (rule, value, callback) => {
-								return this.$tn.test.chinese(value);
-							},
-							message: '姓名必须为中文',
-							// 触发器可以同时用blur和change，二者之间用英文逗号隔开
-							trigger: ['change', 'blur'],
-						},
-						{
-							// 异步验证需要通过调用callback()，并且在里面抛出new Error()
-							// 抛出的内容为需要提示的信息，和其他方式的message属性的提示一样
-							asyncValidator: (rule, value, callback) => {
-								if (value === '图鸟') {
-									callback(new Error('姓名重复'));
-								} else {
-									// 没有错误，也要执行callback()回调
-									callback();
-								}
-							},
-							trigger: ['blur'],
 						}
 					],
-					sex: [{
-						required: true,
-						message: '请选择性别',
-						trigger: 'change'
-					}],
-					phone: [{
-						required: true,
-						message: '请输入手机号码',
-						trigger: 'change'
-					}],
+					
 					desc: [{
-							min: 5,
-							message: '简介不能少于5个字',
+							min: 1,
+							message: '简介不能少于1个字',
 							trigger: 'change'
 						},
 						{
 							// 正则表达式验证演示
-							pattern: /^[\u4e00-\u9fa5]+$/gi,
-							message: '简介只能包含中文',
+							pattern: /^.+$/,
+							message: '简介不能少于1个字',
 							trigger: 'change'
 						}
 					],
-					password: [{
-							required: true,
-							message: '请输入密码',
-							trigger: ['change', 'blur']
-						},
-						{
-							pattern: /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]+\S{5,12}$/,
-							message: '需同时含有字母和数字，长度在6-12之间',
-							trigger: ['change', 'blur']
-						}
-					],
-					rePassword: [{
-							required: true,
-							message: '请再次输入密码',
-							trigger: ['change', 'blur']
-						},
-						{
-							validator: (rule, value, callback) => {
-								return value === this.model.password;
-							},
-							message: '两次输入的密码不相等',
-							trigger: ['change', 'blur'],
-						}
-					],
-					fruit: [{
-						required: true,
-						message: '请选择水果',
-						trigger: 'change',
-						type: 'array'
-					}],
-					payType: [{
-						required: true,
-						message: '请选择支付方式',
-						trigger: 'change'
-					}],
 					region: [{
 						required: true,
 						message: '所在地区不能为空',

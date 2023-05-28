@@ -101,7 +101,7 @@ var components
 try {
   components = {
     tnSwiper: function () {
-      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-swiper/tn-swiper */ "tuniao-ui/components/tn-swiper/tn-swiper").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-swiper/tn-swiper.vue */ 348))
+      return __webpack_require__.e(/*! import() | tuniao-ui/components/tn-swiper/tn-swiper */ "tuniao-ui/components/tn-swiper/tn-swiper").then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-swiper/tn-swiper.vue */ 363))
     },
   }
 } catch (e) {
@@ -271,7 +271,7 @@ var _template_page_mixin = _interopRequireDefault(__webpack_require__(/*! @/libs
 //
 var NavIndexButton = function NavIndexButton() {
   __webpack_require__.e(/*! require.ensure | libs/components/nav-index-button */ "libs/components/nav-index-button").then((function () {
-    return resolve(__webpack_require__(/*! @/libs/components/nav-index-button.vue */ 341));
+    return resolve(__webpack_require__(/*! @/libs/components/nav-index-button.vue */ 356));
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 };
 var _default = {
@@ -364,6 +364,54 @@ var _default = {
       }
     });
     uni.request({
+      url: 'http://www.rural.abc/sights/getCount',
+      method: 'POST',
+      header: {
+        'token': wx.getStorageSync('token'),
+        //自定义请求头信息
+        'content-type': "application/x-www-form-urlencoded"
+      },
+      success: function success(res) {
+        that.$data.tuniaoData[0].value = res.data;
+      }
+    });
+    uni.request({
+      url: 'http://www.rural.abc/agricultural/count',
+      method: 'POST',
+      header: {
+        'token': wx.getStorageSync('token'),
+        //自定义请求头信息
+        'content-type': "application/x-www-form-urlencoded"
+      },
+      success: function success(res) {
+        that.$data.tuniaoData[1].value = res.data;
+      }
+    });
+    uni.request({
+      url: 'http://www.rural.abc/rural/count',
+      method: 'POST',
+      header: {
+        'token': wx.getStorageSync('token'),
+        //自定义请求头信息
+        'content-type': "application/x-www-form-urlencoded"
+      },
+      success: function success(res) {
+        that.$data.tuniaoData[2].value = res.data;
+      }
+    });
+    uni.request({
+      url: 'http://www.rural.abc/employment/count',
+      method: 'POST',
+      header: {
+        'token': wx.getStorageSync('token'),
+        //自定义请求头信息
+        'content-type': "application/x-www-form-urlencoded"
+      },
+      success: function success(res) {
+        that.$data.tuniaoData[3].value = res.data;
+      }
+    });
+    uni.request({
       url: "http://www.rural.abc/sights/beast",
       //仅为示例，并非真实接口地址。
       method: 'POST',
@@ -389,6 +437,12 @@ var _default = {
       var that = this;
       uni.navigateTo({
         url: "/pages/info/info?sid=".concat(that.$data.lis[index].id)
+      });
+    },
+    toInfo2: function toInfo2(index) {
+      var that = this;
+      uni.navigateTo({
+        url: "/pages/info/info?sid=".concat(that.$data.BestList[index].id)
       });
     },
     goPage: function goPage(e) {
